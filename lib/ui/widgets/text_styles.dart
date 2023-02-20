@@ -1,0 +1,193 @@
+import 'package:flutter/material.dart';
+
+TextStyle h1TextStyle({
+  double? size,
+  Color? color,
+  FontWeight? weight,
+  String? fontFamily,
+  double? letterSpacing,
+  FontStyle? fontStyle,
+  double? wordSpacing,
+  TextDecoration? decoration,
+  TextDecorationStyle? textDecorationStyle,
+  TextBaseline? textBaseline,
+  Color? decorationColor,
+  Color? backgroundColor,
+  double? height,
+}) {
+  return TextStyle(
+    fontSize: size ?? 24,
+    color: color ?? Color(0xFF000000),
+    fontWeight: weight ?? FontWeight.w400,
+    fontFamily: fontFamily ?? 'Poppins',
+    letterSpacing: letterSpacing,
+    fontStyle: fontStyle,
+    decoration: decoration,
+    decorationStyle: textDecorationStyle,
+    decorationColor: decorationColor,
+    wordSpacing: wordSpacing,
+    textBaseline: textBaseline,
+    backgroundColor: backgroundColor,
+    height: height ?? 1.25,
+  );
+}
+
+TextStyle h2TextStyle({
+  double? size,
+  Color? color,
+  FontWeight? weight,
+  String? fontFamily,
+  double? letterSpacing,
+  FontStyle? fontStyle,
+  double? wordSpacing,
+  TextDecoration? decoration,
+  TextDecorationStyle? textDecorationStyle,
+  TextBaseline? textBaseline,
+  Color? decorationColor,
+  Color? backgroundColor,
+  double? height,
+}) {
+  return TextStyle(
+    fontSize: size ?? 20,
+    color: color ?? Color(0xFF000000),
+    fontWeight: weight ?? FontWeight.w400,
+    fontFamily: fontFamily ?? 'Poppins',
+    letterSpacing: letterSpacing,
+    fontStyle: fontStyle,
+    decoration: decoration,
+    decorationStyle: textDecorationStyle,
+    decorationColor: decorationColor,
+    wordSpacing: wordSpacing,
+    textBaseline: textBaseline,
+    backgroundColor: backgroundColor,
+    height: height ?? 1.2,
+  );
+}
+
+TextStyle h3TextStyle({
+  double? size,
+  Color? color,
+  FontWeight? weight,
+  String? fontFamily,
+  double? letterSpacing,
+  FontStyle? fontStyle,
+  double? wordSpacing,
+  TextDecoration? decoration,
+  TextDecorationStyle? textDecorationStyle,
+  TextBaseline? textBaseline,
+  Color? decorationColor,
+  Color? backgroundColor,
+  double? height,
+}) {
+  return TextStyle(
+    fontSize: size ?? 18,
+    color: color ?? Color(0xFF000000),
+    fontWeight: weight ?? FontWeight.w400,
+    fontFamily: fontFamily ?? 'Poppins',
+    letterSpacing: letterSpacing,
+    fontStyle: fontStyle,
+    decoration: decoration,
+    decorationStyle: textDecorationStyle,
+    decorationColor: decorationColor,
+    wordSpacing: wordSpacing,
+    textBaseline: textBaseline,
+    backgroundColor: backgroundColor,
+    height: height ?? 1.222,
+  );
+}
+
+TextStyle h4TextStyle({
+  double? size,
+  Color? color,
+  FontWeight? weight,
+  String? fontFamily,
+  double? letterSpacing,
+  FontStyle? fontStyle,
+  double? wordSpacing,
+  TextDecoration? decoration,
+  TextDecorationStyle? textDecorationStyle,
+  TextBaseline? textBaseline,
+  Color? decorationColor,
+  Color? backgroundColor,
+  double? height,
+}) {
+  return TextStyle(
+    fontSize: size ?? 16,
+    color: color ?? Color(0xFF000000),
+    fontWeight: weight ?? FontWeight.w400,
+    fontFamily: fontFamily ?? 'Poppins',
+    letterSpacing: letterSpacing,
+    fontStyle: fontStyle,
+    decoration: decoration,
+    decorationStyle: textDecorationStyle,
+    decorationColor: decorationColor,
+    wordSpacing: wordSpacing,
+    textBaseline: textBaseline,
+    backgroundColor: backgroundColor,
+    height: height ?? 1.25,
+  );
+}
+
+TextStyle h5TextStyle({
+  double? size,
+  Color? color,
+  FontWeight? weight,
+  String? fontFamily,
+  double? letterSpacing,
+  FontStyle? fontStyle,
+  double? wordSpacing,
+  TextDecoration? decoration,
+  TextDecorationStyle? textDecorationStyle,
+  TextBaseline? textBaseline,
+  Color? decorationColor,
+  Color? backgroundColor,
+  double? height,
+}) {
+  return TextStyle(
+    fontSize: size ?? 14,
+    color: color ?? const Color(0xFF000000),
+    fontWeight: weight ?? FontWeight.w400,
+    fontFamily: fontFamily ?? 'Poppins',
+    letterSpacing: letterSpacing,
+    fontStyle: fontStyle,
+    decoration: decoration,
+    decorationStyle: textDecorationStyle,
+    decorationColor: decorationColor,
+    wordSpacing: wordSpacing,
+    textBaseline: textBaseline,
+    backgroundColor: backgroundColor,
+    height: height ?? 1.285,
+  );
+}
+
+TextStyle bodyTextStyle({
+  double? size,
+  Color? color,
+  FontWeight? weight,
+  String? fontFamily,
+  double? letterSpacing,
+  FontStyle? fontStyle,
+  double? wordSpacing,
+  TextDecoration? decoration,
+  TextDecorationStyle? textDecorationStyle,
+  TextBaseline? textBaseline,
+  Color? decorationColor,
+  Color? backgroundColor,
+  double? height,
+}) {
+  return TextStyle(
+    fontSize: size ?? 14,
+    color: color ?? const Color(0xFF000000),
+    fontWeight: weight ?? FontWeight.w400,
+    fontFamily: fontFamily ?? 'Poppins',
+    letterSpacing: letterSpacing,
+    fontStyle: fontStyle,
+    decoration: decoration,
+    decorationStyle: textDecorationStyle,
+    decorationColor: decorationColor,
+    wordSpacing: wordSpacing,
+    textBaseline: textBaseline,
+    backgroundColor: backgroundColor,
+    height: height ?? 1.285,
+  );
+}

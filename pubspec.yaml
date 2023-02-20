@@ -1,0 +1,32 @@
+name: mobile
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  sizer: ^2.0.15
+  get_it: ^7.2.0
+  dio: ^5.0.0
+  json_annotation: ^4.8.0
+  image_picker: ^0.8.6+2
+  shared_preferences: ^2.0.17
+  flutter_svg: ^2.0.1
+  get: ^4.6.5
+  flutter_screenutil: ^5.6.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
