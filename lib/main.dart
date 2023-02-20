@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               FocusManager.instance.primaryFocus?.unfocus();
             },
             child: GetMaterialApp(
-              // TODO: CHANGE THIS TITLE SOON
+              // TODO: CHANGE THIS TITLE
               title: 'GSC Berkah',
               theme: ThemeData(),
               getPages: appRouter(),
