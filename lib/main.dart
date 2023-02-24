@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app_router.dart';
-import 'package:mobile/utils/route_names.dart';
+import 'package:mobile/routes/app_pages.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
               title: 'GSC Berkah',
               theme: ThemeData(),
               getPages: appRouter(),
-              initialRoute: RoutePage.splash,
+              initialRoute: RoutePage.onBoarding,
               builder: (context, child) {
                 return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
