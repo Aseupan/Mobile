@@ -60,7 +60,7 @@ class SectionOnboarding3State extends State<SectionOnboarding3> {
                   'Login',
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 1),
               OutlinedButton(
                 onPressed: () {},
                 style: OutlinedButton.styleFrom(
