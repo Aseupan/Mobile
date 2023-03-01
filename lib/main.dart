@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:mobile/routes/app_pages.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
