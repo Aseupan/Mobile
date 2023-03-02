@@ -10,10 +10,10 @@ class AuthController extends GetxController {
   }.obs;
 
   RxMap<String, TextEditingController> registerForm = {
+    "name": TextEditingController(),
     "username": TextEditingController(),
-    "password": TextEditingController(),
-    "confirmPassword": TextEditingController(),
     "email": TextEditingController(),
+    "password": TextEditingController(),
   }.obs;
 
   void login() async {
@@ -21,7 +21,13 @@ class AuthController extends GetxController {
         loginForm.map((key, value) => MapEntry(key, value.text));
 
     final data = await PostApiService.login(loginFormCopy);
-    print(data.message);
-    // print(data.token);
+  }
+
+  void register() async {
+    print('asdasdasd');
+    final registerFormCopy =
+        registerForm.map((key, value) => MapEntry(key, value.text));
+
+    PostApiService.register(registerFormCopy);
   }
 }
