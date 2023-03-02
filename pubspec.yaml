@@ -27,6 +27,8 @@ dependencies:
   build_runner: ^2.3.3
   retrofit: ^4.0.1
   retrofit_generator: any
+  fluttertoast: ^8.0.8
+  toast: ^0.3.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:mobile/services/api/post_api_service.dart';
 import 'package:mobile/services/models/sources/api/api_services.dart';
 
 class AuthController extends GetxController {
@@ -16,21 +17,11 @@ class AuthController extends GetxController {
   }.obs;
 
   void login() async {
-    // await client.then();
-    // print(loginForm['username']!.text);
+    final loginFormCopy =
+        loginForm.map((key, value) => MapEntry(key, value.text));
 
-    await client.then((value) {
-      value.login(
-        username: loginForm['username']!.text,
-        password: loginForm['username']!.text,
-      );
-    });
-
-    // await client
-    // final loginFormCopy =
-    //     loginForm.map((key, value) => MapEntry(key, value.text));
-
-    // print(loginFormCopy);
-    // PostApiService.login(loginFormCopy);
+    final data = await PostApiService.login(loginFormCopy);
+    print(data.message);
+    // print(data.token);
   }
 }
