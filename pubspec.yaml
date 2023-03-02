@@ -28,7 +28,7 @@ dependencies:
   retrofit: ^4.0.1
   retrofit_generator: any
   fluttertoast: ^8.0.8
-  toast: ^0.3.0
+  email_validator: ^2.1.17
 
 dev_dependencies:
   flutter_test:
