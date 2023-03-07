@@ -1,1 +1,1 @@
-String BASE_URL = "https://38ef-118-99-127-58.ap.ngrok.io";
+String BASE_URL = "https://3a72-175-45-191-253.ap.ngrok.io";

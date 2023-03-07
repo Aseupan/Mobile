@@ -41,6 +41,7 @@ class PostApiService {
       ApiResponse<LoginModel> response = ApiResponse.fromJson(request.data);
       showAlert('Login Successed', isSuccess: true);
       UserToken.setToken(response.data!.token);
+      print(response.data!.token);
 
       return response;
     } on DioError catch (e) {

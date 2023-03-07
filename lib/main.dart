@@ -30,9 +30,11 @@ class MyApp extends StatelessWidget {
             child: GetMaterialApp(
               // TODO: CHANGE THIS TITLE
               title: 'GSC Berkah',
-              theme: ThemeData(),
+              theme: ThemeData(
+                fontFamily: 'Manrope',
+              ),
               getPages: appRouter(),
-              initialRoute: RoutePage.register,
+              initialRoute: RoutePage.home,
               builder: (context, child) {
                 return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1),

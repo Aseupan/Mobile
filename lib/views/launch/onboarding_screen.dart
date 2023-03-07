@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/utils/color_contant.dart';
+import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/launch/onboarding/section_one.dart';
 import 'package:mobile/views/launch/onboarding/section_three.dart';
 import 'package:mobile/views/launch/onboarding/section_two.dart';

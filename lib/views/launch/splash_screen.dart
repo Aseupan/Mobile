@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/utils/color_contant.dart';
+import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/animation/fadein_left_fadein_right.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
