@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
+import 'package:sizer/sizer.dart';
 
 class BackdropHome extends StatefulWidget {
   const BackdropHome({super.key});
@@ -13,6 +14,7 @@ class _BackdropHomeState extends State<BackdropHome> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 55.h,
       decoration: BoxDecoration(
         gradient: ColorConstants.gradient[3],
       ),

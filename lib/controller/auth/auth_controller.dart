@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:mobile/services/api/post_api_service.dart';
-import 'package:mobile/services/models/sources/api/api_services.dart';
 
 class AuthController extends GetxController {
   RxMap<String, TextEditingController> loginForm = {
