@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/home/layouts/home_backdrop.dart';
 import 'package:mobile/views/home/layouts/home_info.dart';
@@ -61,7 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: h5TextStyle(weight: FontWeight.w800),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.toNamed(RoutePage.campaignList);
+                              },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
                               ),

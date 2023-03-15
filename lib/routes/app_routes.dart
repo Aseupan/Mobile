@@ -8,4 +8,7 @@ class RoutePage {
   // Phase 2
   static const String home = "/home";
   static const String campaignList = "/campaign";
+  static String campaignDetail(num id) {
+    return '/campaign/:$id';
+  }
 }
