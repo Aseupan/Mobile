@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'Manrope',
               ),
               getPages: appRouter(),
-              initialRoute: RoutePage.home,
+              initialRoute: RoutePage.campaignList,
               builder: (context, child) {
                 return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1),

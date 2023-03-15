@@ -50,6 +50,10 @@ class ColorConstants {
     1000: Color(0xFF0E2030),
   };
 
+  static const error = Color(0xffFF574D);
+  static const success = Color(0xff2FD181);
+  static const warning = Color(0xffFFD027);
+
   static const gradient = {
     'blue1': LinearGradient(
       begin: Alignment.topLeft,
