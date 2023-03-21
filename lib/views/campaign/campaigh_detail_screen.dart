@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/utils/color_constants.dart';
+import 'package:mobile/widgets/custom_appbar.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
@@ -17,30 +18,7 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.slate[25],
-      appBar: AppBar(
-        leading: Row(
-          children: [
-            IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.black,
-              ),
-            )
-          ],
-        ),
-        leadingWidth: 55,
-        title: Text(
-          "Campaign Details",
-          style: h3TextStyle(
-            weight: FontWeight.w600,
-          ),
-        ),
-        backgroundColor: ColorConstants.slate[25],
-        elevation: 0,
-      ),
+      appBar: CustomAppBar("Campaign Details"),
       body: SingleChildScrollView(
         child: Column(
           children: [

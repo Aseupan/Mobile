@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mobile/routes/app_pages.dart';
 import 'package:mobile/routes/app_routes.dart';
+import 'package:mobile/services/global_theme.dart';
+import 'package:mobile/utils/color_constants.dart';
+import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -30,11 +33,9 @@ class MyApp extends StatelessWidget {
             child: GetMaterialApp(
               // TODO: CHANGE THIS TITLE
               title: 'GSC Berkah',
-              theme: ThemeData(
-                fontFamily: 'Manrope',
-              ),
+              theme: GlobalTheme(),
               getPages: appRouter(),
-              initialRoute: RoutePage.campaignList,
+              initialRoute: RoutePage.foodDetail(10),
               builder: (context, child) {
                 return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
@@ -48,3 +49,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+

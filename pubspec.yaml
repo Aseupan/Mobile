@@ -29,6 +29,7 @@ dependencies:
   retrofit_generator: any
   fluttertoast: ^8.0.8
   email_validator: ^2.1.17
+  intl: ^0.18.0
   carousel_slider: ^4.2.1
 
 dev_dependencies:

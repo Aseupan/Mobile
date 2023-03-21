@@ -5,7 +5,9 @@ import 'package:mobile/views/auth/auth_binding.dart';
 import 'package:mobile/views/auth/login_screen.dart';
 import 'package:mobile/views/auth/register_screen.dart';
 import 'package:mobile/views/campaign/campaigh_detail_screen.dart';
+import 'package:mobile/views/campaign/campaign_binding.dart';
 import 'package:mobile/views/campaign/campaign_list_screen.dart';
+import 'package:mobile/views/campaign/food_campaign_screen.dart';
 import 'package:mobile/views/home/home_screen.dart';
 import 'package:mobile/views/launch/splash_screen.dart';
 import 'package:mobile/routes/app_routes.dart';
@@ -40,8 +42,13 @@ List<GetPage<dynamic>> appRouter() {
       page: () => CampaignListScreen(),
     ),
     GetPage(
-      name: '/campaign/:id',
+      name: '/campaign/:campaignId',
       page: () => CampaignDetailScreen(),
+    ),
+    GetPage(
+      name: '/campaign/:campaignId/food',
+      page: () => FoodCampaignScreen(),
+      binding: CampaignBinding(),
     )
   ];
 }
