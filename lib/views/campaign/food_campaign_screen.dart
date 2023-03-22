@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/campaign/campaign_controller.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/home/layouts/home_tips.dart';
 import 'package:mobile/widgets/control_counter.dart';
@@ -18,7 +19,7 @@ class FoodCampaignScreen extends StatefulWidget {
 }
 
 class _FoodCampaignScreenState extends State<FoodCampaignScreen> {
-  final id = Get.parameters['campaignId']?.substring(1) ?? '0';
+  final id = Get.parameters['campaignId']!.substring(1);
 
   num _angka = 1;
   DateTime _selectedDate = DateTime.now();
@@ -52,62 +53,70 @@ class _FoodCampaignScreenState extends State<FoodCampaignScreen> {
     }
   }
 
-  Widget dialog = Dialog(
-    insetPadding: EdgeInsets.only(left: 5.w, right: 5.w),
-    child: Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: 24,
-        vertical: 20,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Before you send it,',
-            style: h3TextStyle(
-              weight: FontWeight.w800,
+  Widget dialog(BuildContext context) {
+    return Dialog(
+      insetPadding: EdgeInsets.only(left: 5.w, right: 5.w),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: 24,
+          vertical: 20,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Before you send it,',
+              style: h3TextStyle(
+                weight: FontWeight.w800,
+              ),
             ),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'Are you sure your food packaging is safe enough to arrive safely?',
-            style: h5TextStyle(color: ColorConstants.slate[400]),
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              OutlinedButton(
-                onPressed: () {},
-                child: Text(
-                  'I’m not sure',
-                  style: h5TextStyle(
-                    color: ColorConstants.slate[600],
-                    weight: FontWeight.w500,
+            SizedBox(height: 8),
+            Text(
+              'Are you sure your food packaging is safe enough to arrive safely?',
+              style: h5TextStyle(color: ColorConstants.slate[400]),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                OutlinedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    print(id);
+                  },
+                  child: Text(
+                    'I’m not sure',
+                    style: h5TextStyle(
+                      color: ColorConstants.slate[600],
+                      weight: FontWeight.w500,
+                    ),
                   ),
                 ),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'I’m sure, next',
-                  style: h5TextStyle(
-                    weight: FontWeight.w500,
-                    color: ColorConstants.slate[25],
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Get.toNamed(RoutePage.pickupDetail(num.parse(id)));
+                  },
+                  child: Text(
+                    'I’m sure, next',
+                    style: h5TextStyle(
+                      weight: FontWeight.w500,
+                      color: ColorConstants.slate[25],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -179,7 +188,7 @@ class _FoodCampaignScreenState extends State<FoodCampaignScreen> {
                 () => ControlCounter(
                   value: _controller.foodDetails[id]?.quantity.value ?? 0,
                   label: 'Quantity',
-                  unit: 'Kg',
+                  unit: 'Pcs',
                   onChange: (e) {
                     _controller.foodDetails[id]?.quantity.value = e;
                   },
@@ -226,7 +235,8 @@ class _FoodCampaignScreenState extends State<FoodCampaignScreen> {
                       ? () {
                           showDialog(
                               context: context,
-                              builder: (BuildContext context) => dialog);
+                              builder: (BuildContext context) =>
+                                  dialog(context));
                         }
                       : null,
                   child: Text(

@@ -15,4 +15,8 @@ class RoutePage {
   static String foodDetail(num campaignId) {
     return '/campaign/:$campaignId/food';
   }
+
+  static String pickupDetail(num campaignId) {
+    return '/campaign/:$campaignId/pickup';
+  }
 }

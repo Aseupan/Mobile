@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/utils/color_constants.dart';
 
 TextStyle h1TextStyle({
   double? size,
@@ -145,7 +146,7 @@ TextStyle h5TextStyle({
 }) {
   return TextStyle(
     fontSize: size ?? 14,
-    color: color ?? const Color(0xFF000000),
+    color: color ?? ColorConstants.slate[900],
     fontWeight: weight ?? FontWeight.w400,
     fontFamily: fontFamily ?? 'Manrope',
     letterSpacing: letterSpacing,
@@ -177,7 +178,7 @@ TextStyle bodyTextStyle({
 }) {
   return TextStyle(
     fontSize: size ?? 14,
-    color: color ?? const Color(0xFF000000),
+    color: color ?? ColorConstants.slate[900],
     fontWeight: weight ?? FontWeight.w400,
     fontFamily: fontFamily ?? 'Manrope',
     letterSpacing: letterSpacing,
@@ -209,7 +210,7 @@ TextStyle body1TextStyle({
 }) {
   return TextStyle(
     fontSize: size ?? 22,
-    color: color ?? const Color(0xFF000000),
+    color: color ?? ColorConstants.slate[900],
     fontWeight: weight ?? FontWeight.w400,
     fontFamily: fontFamily ?? 'Manrope',
     letterSpacing: letterSpacing,
@@ -241,7 +242,7 @@ TextStyle body2TextStyle({
 }) {
   return TextStyle(
     fontSize: size ?? 20,
-    color: color ?? const Color(0xFF000000),
+    color: color ?? ColorConstants.slate[900],
     fontWeight: weight ?? FontWeight.w400,
     fontFamily: fontFamily ?? 'Manrope',
     letterSpacing: letterSpacing,
@@ -273,7 +274,7 @@ TextStyle body3TextStyle({
 }) {
   return TextStyle(
     fontSize: size ?? 18,
-    color: color ?? const Color(0xFF000000),
+    color: color ?? ColorConstants.slate[900],
     fontWeight: weight ?? FontWeight.w400,
     fontFamily: fontFamily ?? 'Manrope',
     letterSpacing: letterSpacing,
@@ -305,7 +306,7 @@ TextStyle body4TextStyle({
 }) {
   return TextStyle(
     fontSize: size ?? 16,
-    color: color ?? const Color(0xFF000000),
+    color: color ?? ColorConstants.slate[900],
     fontWeight: weight ?? FontWeight.w400,
     fontFamily: fontFamily ?? 'Manrope',
     letterSpacing: letterSpacing,
@@ -337,7 +338,7 @@ TextStyle body5TextStyle({
 }) {
   return TextStyle(
     fontSize: size ?? 14,
-    color: color ?? const Color(0xFF000000),
+    color: color ?? ColorConstants.slate[900],
     fontWeight: weight ?? FontWeight.w400,
     fontFamily: fontFamily ?? 'Manrope',
     letterSpacing: letterSpacing,
@@ -369,7 +370,7 @@ TextStyle body6TextStyle({
 }) {
   return TextStyle(
     fontSize: size ?? 12,
-    color: color ?? const Color(0xFF000000),
+    color: color ?? ColorConstants.slate[900],
     fontWeight: weight ?? FontWeight.w400,
     fontFamily: fontFamily ?? 'Manrope',
     letterSpacing: letterSpacing,

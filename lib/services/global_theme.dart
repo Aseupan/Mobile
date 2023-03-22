@@ -11,6 +11,7 @@ ThemeData GlobalTheme() {
         horizontal: 16,
       ),
     ),
+    scaffoldBackgroundColor: ColorConstants.slate[25],
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,

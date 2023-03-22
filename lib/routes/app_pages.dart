@@ -8,6 +8,7 @@ import 'package:mobile/views/campaign/campaigh_detail_screen.dart';
 import 'package:mobile/views/campaign/campaign_binding.dart';
 import 'package:mobile/views/campaign/campaign_list_screen.dart';
 import 'package:mobile/views/campaign/food_campaign_screen.dart';
+import 'package:mobile/views/campaign/pickup_detail_screen.dart';
 import 'package:mobile/views/home/home_screen.dart';
 import 'package:mobile/views/launch/splash_screen.dart';
 import 'package:mobile/routes/app_routes.dart';
@@ -49,6 +50,10 @@ List<GetPage<dynamic>> appRouter() {
       name: '/campaign/:campaignId/food',
       page: () => FoodCampaignScreen(),
       binding: CampaignBinding(),
+    ),
+    GetPage(
+      name: '/campaign/:campaignId/pickup',
+      page: () => PickupDetailScreen(),
     )
   ];
 }
