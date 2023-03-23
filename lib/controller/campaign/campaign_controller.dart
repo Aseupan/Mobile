@@ -17,8 +17,18 @@ class FoodDetail {
   }
 }
 
+class PickupDetail {
+  RxBool isSpecial = false.obs;
+  RxBool isAdditional = false.obs;
+  RxBool isGift = false.obs;
+  RxBool isAggree = false.obs;
+}
+
 class CampaignController extends GetxController {
   static CampaignController get i => Get.find();
 
   var foodDetails = <String, FoodDetail>{}.obs;
+  // Rx<PickupDetail> pickupState = PickupDetail().obs;
+
+  RxMap<String, PickupDetail> pickupState = <String, PickupDetail>{}.obs;
 }

@@ -11,6 +11,16 @@ ThemeData GlobalTheme() {
         horizontal: 16,
       ),
     ),
+    checkboxTheme: CheckboxThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+        side: BorderSide(
+          width: 1,
+        ),
+      ),
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      splashRadius: 0,
+    ),
     scaffoldBackgroundColor: ColorConstants.slate[25],
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(

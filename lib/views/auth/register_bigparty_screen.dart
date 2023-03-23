@@ -49,7 +49,11 @@ class _RegisterBigpartyScreenState extends State<RegisterBigpartyScreen> {
                     children: [
                       SizedBox(height: 80),
                       Center(
-                        child: SvgPicture.asset("assets/images/logo.svg"),
+                        child: Image(
+                          image: AssetImage('assets/logo/logo-no-text.png'),
+                          width: 116,
+                          height: 90,
+                        ),
                       ),
                       SizedBox(height: 30),
                       Text(
