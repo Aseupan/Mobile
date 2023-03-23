@@ -3,6 +3,7 @@
 import 'package:get/get.dart';
 import 'package:mobile/views/auth/auth_binding.dart';
 import 'package:mobile/views/auth/login_screen.dart';
+import 'package:mobile/views/auth/register_bigparty_screen.dart';
 import 'package:mobile/views/auth/register_screen.dart';
 import 'package:mobile/views/campaign/campaigh_detail_screen.dart';
 import 'package:mobile/views/campaign/campaign_binding.dart';
@@ -54,6 +55,11 @@ List<GetPage<dynamic>> appRouter() {
     GetPage(
       name: '/campaign/:campaignId/pickup',
       page: () => PickupDetailScreen(),
+    ),
+    GetPage(
+      name: RoutePage.registerBigparty,
+      page: () => RegisterBigpartyScreen(),
+      binding: AuthBinding(),
     )
   ];
 }

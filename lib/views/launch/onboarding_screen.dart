@@ -3,12 +3,7 @@ import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/launch/onboarding/section_one.dart';
 import 'package:mobile/views/launch/onboarding/section_three.dart';
 import 'package:mobile/views/launch/onboarding/section_two.dart';
-import 'package:mobile/widgets/animation/fadein_left.dart';
-import 'package:mobile/widgets/animation/fadeout_right.dart';
-import 'package:mobile/widgets/animation/opacity_transition.dart';
-import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -59,60 +54,64 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Row(
                         children: [
                           SizedBox(width: 30),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              backgroundColor: ColorConstants.slate[25],
-                              foregroundColor: ColorConstants.slate[900],
-                            ),
-                            onPressed: _onBoarding != 1
-                                ? () {
-                                    setState(() {
-                                      _onBoarding -= 1;
-                                      print(_onBoarding);
-                                    });
-                                  }
-                                : null,
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.chevron_left,
-                                ),
-                                SizedBox(width: 7),
-                                Text(
-                                  'Back',
-                                ),
-                              ],
-                            ),
-                          ),
+                          _onBoarding != 1
+                              ? TextButton(
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: ColorConstants.slate[25],
+                                    foregroundColor: ColorConstants.slate[900],
+                                  ),
+                                  onPressed: _onBoarding != 1
+                                      ? () {
+                                          setState(() {
+                                            _onBoarding -= 1;
+                                            print(_onBoarding);
+                                          });
+                                        }
+                                      : null,
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.chevron_left,
+                                      ),
+                                      SizedBox(width: 7),
+                                      Text(
+                                        'Back',
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : Container()
                         ],
                       ),
                       Row(
                         children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: ColorConstants.slate[25],
-                              foregroundColor: ColorConstants.slate[900],
-                            ),
-                            onPressed: _onBoarding != 3
-                                ? () {
-                                    setState(() {
-                                      _onBoarding += 1;
-                                      print(_onBoarding);
-                                    });
-                                  }
-                                : null,
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Continue',
-                                ),
-                                SizedBox(width: 7),
-                                Icon(
-                                  Icons.chevron_right,
-                                ),
-                              ],
-                            ),
-                          ),
+                          _onBoarding != 3
+                              ? ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: ColorConstants.slate[25],
+                                    foregroundColor: ColorConstants.slate[900],
+                                  ),
+                                  onPressed: _onBoarding != 3
+                                      ? () {
+                                          setState(() {
+                                            _onBoarding += 1;
+                                            print(_onBoarding);
+                                          });
+                                        }
+                                      : null,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Continue',
+                                      ),
+                                      SizedBox(width: 7),
+                                      Icon(
+                                        Icons.chevron_right,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : Container(),
                           SizedBox(width: 30)
                         ],
                       ),

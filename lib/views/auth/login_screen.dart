@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Username",
+                            "Email",
                             style: bodyTextStyle(
                               weight: FontWeight.w500,
                               color: Colors.white,
@@ -76,16 +76,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               fillColor: Colors.white,
                               prefixIcon: Icon(
-                                Icons.person,
+                                Icons.email,
                                 color: ColorConstants.slate[500],
                               ),
                             ),
-                            controller: _controller.loginForm.value["username"],
+                            controller: _controller.loginForm["email"],
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Please enter your username';
+                                return 'Please enter your email';
                               }
-
                               return null;
                             },
                           ),
@@ -167,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
                                         // ROUTES GO TO REGISTER
-                                        Get.toNamed(RoutePage.register);
+                                        Get.offAndToNamed(RoutePage.register);
                                       },
                                   ),
                                 ],

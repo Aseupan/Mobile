@@ -10,14 +10,14 @@ import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class RegisterBigpartyScreen extends StatefulWidget {
+  const RegisterBigpartyScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<RegisterBigpartyScreen> createState() => _RegisterBigpartyScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterBigpartyScreenState extends State<RegisterBigpartyScreen> {
   bool _obscureText = true;
   bool _obscureConfirmPassword = true;
   final _formKey = GlobalKey<FormState>();
@@ -53,7 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       SizedBox(height: 30),
                       Text(
-                        "Hey, welcome!",
+                        "Welcome, food hero!",
                         style: h1TextStyle(
                           color: Colors.white,
                           weight: FontWeight.w800,
@@ -64,19 +64,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Name",
+                            "Company Name",
                             style: bodyTextStyle(
                               weight: FontWeight.w500,
                               color: Colors.white,
                             ),
                           ),
+                          SizedBox(height: 5),
                           TextFormField(
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.symmetric(
                                   vertical: 11, horizontal: 14),
-                              hintText: "ex: John Doe",
+                              hintText: "ex: John Foundation",
                               hintStyle: body5TextStyle(
-                                weight: FontWeight.w600,
+                                weight: FontWeight.w500,
                                 color: ColorConstants.slate[400],
                               ),
                               filled: true,
@@ -87,7 +88,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               fillColor: Colors.white,
                             ),
-                            controller: _controller.registerForm['name'],
+                            controller:
+                                _controller.registerBigpartyForm['name'],
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter your name';
@@ -98,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           SizedBox(height: 15),
                           Text(
-                            "Email",
+                            "Company Email",
                             style: bodyTextStyle(
                               weight: FontWeight.w500,
                               color: Colors.white,
@@ -119,9 +121,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 Icons.mail_outline,
                                 color: ColorConstants.slate[500],
                               ),
+                              hintStyle: body5TextStyle(
+                                weight: FontWeight.w500,
+                                color: ColorConstants.slate[400],
+                              ),
                             ),
                             keyboardType: TextInputType.emailAddress,
-                            controller: _controller.registerForm['email'],
+                            controller:
+                                _controller.registerBigpartyForm['email'],
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter your Email';
@@ -135,6 +142,43 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           SizedBox(height: 15),
                           Text(
+                            "Company Address",
+                            style: bodyTextStyle(
+                              weight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          TextFormField(
+                            decoration: InputDecoration(
+                              hintText: "ex: Jl. Veteran 100",
+                              filled: true,
+                              isDense: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide.none,
+                              ),
+                              fillColor: Colors.white,
+                              hintStyle: body5TextStyle(
+                                weight: FontWeight.w500,
+                                color: ColorConstants.slate[400],
+                              ),
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                            controller:
+                                _controller.registerBigpartyForm['address'],
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your Email';
+                              }
+                              if (!EmailValidator.validate(value)) {
+                                return "Email is not valid";
+                              }
+
+                              return null;
+                            },
+                          ),
+                          Text(
                             "Password",
                             style: bodyTextStyle(
                               weight: FontWeight.w500,
@@ -145,6 +189,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextFormField(
                             decoration: InputDecoration(
                               hintText: "Password",
+                              hintStyle: body5TextStyle(
+                                weight: FontWeight.w500,
+                                color: ColorConstants.slate[400],
+                              ),
                               filled: true,
                               isDense: true,
                               border: OutlineInputBorder(
@@ -167,7 +215,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 },
                               ),
                             ),
-                            controller: _controller.registerForm['password'],
+                            controller:
+                                _controller.registerBigpartyForm['password'],
                             obscureText: _obscureText,
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -189,6 +238,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextFormField(
                             decoration: InputDecoration(
                               hintText: "Password",
+                              hintStyle: body5TextStyle(
+                                weight: FontWeight.w500,
+                                color: ColorConstants.slate[400],
+                              ),
                               filled: true,
                               isDense: true,
                               border: OutlineInputBorder(
@@ -219,7 +272,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 return 'Please enter your password';
                               }
                               if (value !=
-                                  _controller.registerForm['password']!.text) {
+                                  _controller
+                                      .registerBigpartyForm['password']!.text) {
                                 return "Your Confirm Password is Wrong";
                               }
 

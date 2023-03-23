@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/utils/color_constants.dart';
+import 'package:mobile/views/launch/widgets/register_modal.dart';
 import 'package:mobile/widgets/animation/fadein_left.dart';
 import 'package:mobile/widgets/animation/opacity_transition.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SectionOnboarding3 extends StatefulWidget {
   const SectionOnboarding3({super.key});
@@ -53,7 +55,8 @@ class SectionOnboarding3State extends State<SectionOnboarding3> {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  fixedSize: Size(70.w, 10),
+                  padding: EdgeInsets.symmetric(vertical: 5),
+                  fixedSize: Size(70.w, 30),
                   backgroundColor: ColorConstants.primary[600],
                 ),
                 child: Text(
@@ -62,7 +65,14 @@ class SectionOnboarding3State extends State<SectionOnboarding3> {
               ),
               SizedBox(height: 1),
               OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (builder) {
+                      return RegisterModal();
+                    },
+                  );
+                },
                 style: OutlinedButton.styleFrom(
                     fixedSize: Size(70.w, 10),
                     side: BorderSide(

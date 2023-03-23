@@ -48,8 +48,8 @@ ThemeData GlobalTheme() {
         borderRadius: BorderRadius.circular(10),
       ),
       contentPadding: EdgeInsets.symmetric(
-        vertical: 0,
-        horizontal: 10,
+        vertical: 10,
+        horizontal: 14,
       ),
       border: OutlineInputBorder(
         borderSide: BorderSide(
@@ -58,7 +58,7 @@ ThemeData GlobalTheme() {
         ),
         borderRadius: BorderRadius.circular(10),
       ),
-      hintStyle: body5TextStyle(color: ColorConstants.slate[800]),
+      hintStyle: body5TextStyle(color: ColorConstants.slate[400]),
     ),
   );
 }

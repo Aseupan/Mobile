@@ -4,8 +4,7 @@ import 'package:get/get.dart';
 import 'package:mobile/routes/app_pages.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/global_theme.dart';
-import 'package:mobile/utils/color_constants.dart';
-import 'package:mobile/widgets/text_styles.dart';
+import 'package:mobile/widgets/double_back_close.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -17,7 +16,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -35,11 +33,11 @@ class MyApp extends StatelessWidget {
               title: 'GSC Berkah',
               theme: GlobalTheme(),
               getPages: appRouter(),
-              initialRoute: RoutePage.foodDetail(10),
+              initialRoute: RoutePage.onBoarding,
               builder: (context, child) {
                 return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
-                  child: child ?? Container(),
+                  child: DoubleBackToCloseApp(child: child ?? Container()),
                 );
               },
             ),

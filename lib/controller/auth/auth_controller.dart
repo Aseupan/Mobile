@@ -4,7 +4,7 @@ import 'package:mobile/services/api/post_api_service.dart';
 
 class AuthController extends GetxController {
   RxMap<String, TextEditingController> loginForm = {
-    "username": TextEditingController(),
+    "email": TextEditingController(),
     "password": TextEditingController(),
   }.obs;
 
@@ -13,6 +13,15 @@ class AuthController extends GetxController {
     "username": TextEditingController(),
     "email": TextEditingController(),
     "password": TextEditingController(),
+  }.obs;
+
+  RxMap<String, TextEditingController> registerBigpartyForm =
+      <String, TextEditingController>{
+    "name": TextEditingController(),
+    "email": TextEditingController(),
+    "address": TextEditingController(),
+    "password": TextEditingController(),
+    "confirmPassword": TextEditingController(),
   }.obs;
 
   void login() async {
