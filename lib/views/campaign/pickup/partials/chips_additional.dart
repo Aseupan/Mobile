@@ -6,11 +6,16 @@ import 'package:mobile/controller/campaign/campaign_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
-class ChipsAdditional extends StatelessWidget {
+class ChipsAdditional extends StatefulWidget {
+  const ChipsAdditional({super.key});
+
+  @override
+  State<ChipsAdditional> createState() => _ChipsAdditionalState();
+}
+
+class _ChipsAdditionalState extends State<ChipsAdditional> {
   final id = Get.parameters['campaignId']!.substring(1);
   final _controller = CampaignController.i.pickupState;
-
-  ChipsAdditional({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +66,7 @@ class ChipsAdditional extends StatelessWidget {
                     children: [
                       Obx(
                         () => Checkbox(
-                          value: _controller[id]?.isSpecial.value,
+                          value: _controller[id]?.isSpecial.value ?? false,
                           onChanged: (e) {
                             _controller[id]?.isSpecial.value = e!;
                           },
@@ -120,7 +125,7 @@ class ChipsAdditional extends StatelessWidget {
                     children: [
                       Obx(
                         () => Checkbox(
-                          value: _controller[id]?.isAdditional.value,
+                          value: _controller[id]?.isAdditional.value ?? false,
                           onChanged: (e) {
                             _controller[id]?.isAdditional.value = e!;
                           },
@@ -179,7 +184,7 @@ class ChipsAdditional extends StatelessWidget {
                     children: [
                       Obx(
                         () => Checkbox(
-                          value: _controller[id]?.isGift.value,
+                          value: _controller[id]?.isGift.value ?? false,
                           onChanged: (e) {
                             _controller[id]?.isGift.value = e!;
                           },

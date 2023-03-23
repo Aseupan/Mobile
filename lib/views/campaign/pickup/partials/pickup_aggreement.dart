@@ -17,7 +17,7 @@ class PickupAggreements extends StatelessWidget {
       children: [
         Obx(
           () => Checkbox(
-            value: _controller[id]?.isAggree.value,
+            value: _controller[id]?.isAggree.value ?? false,
             onChanged: (e) {
               _controller[id]?.isAggree.value = e!;
             },
