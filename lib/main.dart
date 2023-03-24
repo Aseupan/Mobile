@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:mobile/controller/global/global_binding.dart';
 import 'package:mobile/routes/app_pages.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/global_theme.dart';
@@ -30,10 +31,11 @@ class MyApp extends StatelessWidget {
             },
             child: GetMaterialApp(
               // TODO: CHANGE THIS TITLE
+              initialBinding: GlobalBinding(),
               title: 'GSC Berkah',
               theme: GlobalTheme(),
               getPages: appRouter(),
-              initialRoute: RoutePage.pickupDetail(10),
+              initialRoute: RoutePage.home,
               builder: (context, child) {
                 return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
