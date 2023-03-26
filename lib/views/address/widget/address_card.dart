@@ -35,6 +35,7 @@ class AddressCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

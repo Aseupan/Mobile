@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/launch/widgets/register_modal.dart';
 import 'package:mobile/widgets/animation/fadein_left.dart';
@@ -53,7 +55,9 @@ class SectionOnboarding3State extends State<SectionOnboarding3> {
           Column(
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(RoutePage.login);
+                },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 5),
                   fixedSize: Size(70.w, 30),

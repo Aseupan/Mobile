@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
               title: 'GSC Berkah',
               theme: GlobalTheme(),
               getPages: appRouter(),
-              initialRoute: RoutePage.home,
+              initialRoute: RoutePage.onBoarding,
               builder: (context, child) {
                 return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1),

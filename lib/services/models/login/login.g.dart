@@ -8,11 +8,13 @@ part of 'login.dart';
 
 LoginModel _$LoginModelFromJson(Map<String, dynamic> json) => LoginModel(
       token: json['token'] as String,
-      username: json['username'] as String,
+      name: json['name'] as String,
+      type: json['type'] as String,
     );
 
 Map<String, dynamic> _$LoginModelToJson(LoginModel instance) =>
     <String, dynamic>{
       'token': instance.token,
-      'username': instance.username,
+      'name': instance.name,
+      'type': instance.type,
     };

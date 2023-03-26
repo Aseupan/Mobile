@@ -139,7 +139,6 @@ class _FoodCampaignScreenState extends State<FoodCampaignScreen> {
               ),
               SizedBox(height: 6),
               DropdownButtonFormField(
-                isExpanded: true,
                 hint: Text(
                   'Choose Food Type',
                   style: body5TextStyle(),

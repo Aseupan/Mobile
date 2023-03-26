@@ -1,6 +1,8 @@
 // class AppRouter {}
 
 import 'package:get/get.dart';
+import 'package:mobile/views/address/myaddress_screen.dart';
+import 'package:mobile/views/address/new_address_screen.dart';
 import 'package:mobile/views/auth/auth_binding.dart';
 import 'package:mobile/views/auth/login_screen.dart';
 import 'package:mobile/views/auth/register_bigparty_screen.dart';
@@ -60,6 +62,14 @@ List<GetPage<dynamic>> appRouter() {
       name: RoutePage.registerBigparty,
       page: () => RegisterBigpartyScreen(),
       binding: AuthBinding(),
+    ),
+    GetPage(
+      name: RoutePage.myAddress,
+      page: () => MyAddressScreen(),
+    ),
+    GetPage(
+      name: RoutePage.createAddress,
+      page: () => NewAddressScreen(),
     )
   ];
 }

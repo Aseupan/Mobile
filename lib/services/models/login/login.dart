@@ -6,11 +6,13 @@ part 'login.g.dart';
 @JsonSerializable()
 class LoginModel implements ModelFactory {
   final String token;
-  final String username;
+  final String name;
+  final String type;
 
   LoginModel({
     required this.token,
-    required this.username,
+    required this.name,
+    required this.type,
   });
 
   factory LoginModel.fromJson(Map<String, dynamic> json) =>

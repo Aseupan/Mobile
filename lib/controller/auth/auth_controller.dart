@@ -25,10 +25,12 @@ class AuthController extends GetxController {
   }.obs;
 
   void login() async {
+    print('coba login');
+
     final loginFormCopy =
         loginForm.map((key, value) => MapEntry(key, value.text));
 
-    final data = await PostApiService.login(loginFormCopy);
+    PostApiService.login(loginFormCopy);
   }
 
   void register() async {

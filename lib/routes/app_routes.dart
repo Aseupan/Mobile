@@ -6,6 +6,7 @@ class RoutePage {
   static const String register = "/register";
   static const String registerBigparty = "/b/register";
   static const String myAddress = "/address";
+  static const String createAddress = "/address/create";
 
   // Phase 2
   static const String home = "/home";

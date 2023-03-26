@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:mobile/services/api/user_token.dart';
+import 'package:mobile/services/api/app_token.dart';
 // import 'log_interceptor.dart';
 
 class AppDio {

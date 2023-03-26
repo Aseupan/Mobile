@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/auth/auth_controller.dart';
 import 'package:mobile/routes/app_routes.dart';
+import 'package:mobile/services/api/app_token.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
@@ -140,14 +141,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                // do something if the form is valid
                                 _controller.login();
                               }
                             },
                             child: Text(
                               "Login",
                               style: h5TextStyle(
-                                color: ColorConstants.primary[300],
+                                color: ColorConstants.primary[500],
                                 weight: FontWeight.w800,
                               ),
                             ),
