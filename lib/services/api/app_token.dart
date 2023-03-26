@@ -3,7 +3,8 @@ import 'package:get_storage/get_storage.dart';
 class UserToken {
   static String getToken() {
     final storage = GetStorage();
-    return storage.read('user_token');
+
+    return storage.read('user_token') ?? '';
   }
 
   static void setToken(token) async {
@@ -30,7 +31,7 @@ class UserToken {
 class AppToken {
   static String getToken() {
     final storage = GetStorage();
-    return storage.read('app_token');
+    return storage.read('app_token') ?? '';
   }
 
   static void clearToken() async {
@@ -50,7 +51,7 @@ class AppToken {
 class AdminToken {
   static String getToken() {
     final storage = GetStorage();
-    return storage.read('admin_token');
+    return storage.read('admin_token') ?? '';
   }
 
   static void setToken(token) async {
