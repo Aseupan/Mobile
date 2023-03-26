@@ -1,5 +1,5 @@
-import 'package:mobile/services/models/sources/model_factory.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:mobile/models/sources/model_factory.dart';
 
 part 'login.g.dart';
 

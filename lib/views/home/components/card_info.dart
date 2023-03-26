@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/models/home/information_card.dart';
 import 'package:mobile/utils/color_constants.dart';
+import 'package:mobile/utils/date_formatter.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
 class CardInfo extends StatelessWidget {
-  const CardInfo({super.key});
+  InformationCard data;
+
+  CardInfo({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -16,68 +20,69 @@ class CardInfo extends StatelessWidget {
         horizontal: 20,
         vertical: 16,
       ),
+      height: 100,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(10)),
             child: Image(
-              image: AssetImage('assets/images/dummy_card_blog.jpg'),
+              image: NetworkImage(data.thumbnail),
               width: 75,
               height: 75,
               fit: BoxFit.fill,
             ),
           ),
-          SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: ColorConstants.gradient['blue1'],
-                    borderRadius: BorderRadius.all(Radius.circular(4)),
+          SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  gradient: ColorConstants.gradient['blue1'],
+                  borderRadius: BorderRadius.all(Radius.circular(4)),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+                child: Text(
+                  data.type,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 9,
+                    fontWeight: FontWeight.w800,
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
-                  child: Text(
-                    'Blog',
+                ),
+              ),
+              SizedBox(height: 6),
+              Text(
+                data.title,
+                style: body6TextStyle(
+                  color: ColorConstants.slate[900],
+                  weight: FontWeight.w700,
+                ),
+              ),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  Icon(
+                    Icons.calendar_month_outlined,
+                    size: 12,
+                    color: ColorConstants.slate[400],
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    formatDate(data.CreatedAt),
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 9,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                  style: body6TextStyle(
-                    color: ColorConstants.slate[900],
-                    weight: FontWeight.w700,
-                  ),
-                ),
-                SizedBox(height: 7),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.calendar_month_outlined,
-                      size: 12,
                       color: ColorConstants.slate[400],
+                      fontWeight: FontWeight.w600,
+                      fontSize: 8,
                     ),
-                    SizedBox(width: 8),
-                    Text(
-                      'March 1st 2023',
-                      style: TextStyle(
-                        color: ColorConstants.slate[400],
-                        fontWeight: FontWeight.w600,
-                        fontSize: 8,
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
-          )
+                  )
+                ],
+              )
+            ],
+          ),
         ],
       ),
     );

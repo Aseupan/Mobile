@@ -1,7 +1,7 @@
+import 'package:mobile/models/login/login.dart';
+import 'package:mobile/models/response.dart';
+import 'package:mobile/models/sources/dio.dart';
 import 'package:mobile/services/api/base_url.dart';
-import 'package:mobile/services/models/login/login.dart';
-import 'package:mobile/services/models/response.dart';
-import 'package:mobile/services/models/sources/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 

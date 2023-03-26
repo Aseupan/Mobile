@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mobile/services/models/sources/base_response.dart';
-import 'package:mobile/services/models/sources/model_factory.dart';
+import 'package:mobile/models/sources/base_response.dart';
+import 'package:mobile/models/sources/model_factory.dart';
 
 class ApiResponse<T> extends BaseResponse {
   final T? data;
@@ -23,6 +23,26 @@ class ApiResponse<T> extends BaseResponse {
       error: json['error'],
     );
   }
+}
+
+class ApiResponses<T> extends BaseResponse {
+  List<T>? data;
+  String? error;
+
+  ApiResponses({
+    this.data = const [],
+    required bool success,
+    required String message,
+    this.error,
+  }) : super(success: success, message: message, error: error);
+
+  factory ApiResponses.fromJson(Map<String, dynamic> json) => ApiResponses<T>(
+        message: json['message'],
+        success: json['success'],
+        data: List<T>.from((json["results"] ?? json["data"])
+            .map((x) => _Converter<T?>().fromJson(x))),
+        error: json['error'],
+      );
 }
 
 class _Converter<T> implements JsonConverter<T?, Object?> {

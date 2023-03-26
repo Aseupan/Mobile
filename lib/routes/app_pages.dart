@@ -1,6 +1,7 @@
 // class AppRouter {}
 
 import 'package:get/get.dart';
+import 'package:mobile/controller/home/home_binding.dart';
 import 'package:mobile/views/address/myaddress_screen.dart';
 import 'package:mobile/views/address/new_address_screen.dart';
 import 'package:mobile/views/auth/auth_binding.dart';
@@ -39,6 +40,7 @@ List<GetPage<dynamic>> appRouter() {
     ),
     GetPage(
       name: RoutePage.home,
+      binding: HomeBinding(),
       page: () => HomeScreen(),
     ),
     GetPage(
