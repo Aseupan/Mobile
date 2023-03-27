@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/bottom_bar/items.dart';
 
 class CustomBottomAppbar extends StatelessWidget {
-  const CustomBottomAppbar({super.key});
+  int index;
+  GlobalController controller = GlobalController.i;
+
+  CustomBottomAppbar({
+    super.key,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
+    controller.stateBar.value = index;
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -31,10 +39,22 @@ class CustomBottomAppbar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                BottomBarItem(index: 1),
-                BottomBarItem(index: 2),
-                BottomBarItem(index: 3),
-                BottomBarItem(index: 4),
+                BottomBarItem(
+                  index: 1,
+                  current: index,
+                ),
+                BottomBarItem(
+                  index: 2,
+                  current: index,
+                ),
+                BottomBarItem(
+                  index: 3,
+                  current: index,
+                ),
+                BottomBarItem(
+                  index: 4,
+                  current: index,
+                ),
               ],
             ),
           )

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:mobile/controller/global/global_binding.dart';
 import 'package:mobile/routes/app_pages.dart';
 import 'package:mobile/routes/app_routes.dart';
+import 'package:mobile/services/api/app_token.dart';
 import 'package:mobile/services/global_theme.dart';
 import 'package:mobile/widgets/double_back_close.dart';
 import 'package:sizer/sizer.dart';
@@ -35,11 +36,13 @@ class MyApp extends StatelessWidget {
               title: 'GSC Berkah',
               theme: GlobalTheme(),
               getPages: appRouter(),
-              initialRoute: RoutePage.home,
+              initialRoute:
+                  AppToken.checkToken() ? RoutePage.home : RoutePage.onBoarding,
               builder: (context, child) {
                 return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
-                  child: DoubleBackToCloseApp(child: child ?? Container()),
+                  child: child ?? Container(),
+                  // child: DoubleBackToCloseApp(child: child ?? Container()),
                 );
               },
             ),

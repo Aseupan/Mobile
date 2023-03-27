@@ -17,6 +17,7 @@ import 'package:mobile/views/home/home_screen.dart';
 import 'package:mobile/views/launch/splash_screen.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/views/launch/onboarding_screen.dart';
+import 'package:mobile/views/rewards/reward_screen.dart';
 
 List<GetPage<dynamic>> appRouter() {
   return <GetPage<dynamic>>[
@@ -72,6 +73,10 @@ List<GetPage<dynamic>> appRouter() {
     GetPage(
       name: RoutePage.createAddress,
       page: () => NewAddressScreen(),
-    )
+    ),
+    GetPage(
+      name: RoutePage.reward,
+      page: () => RewardScreen(),
+    ),
   ];
 }

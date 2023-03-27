@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/controller/home/home_controller.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/api/app_token.dart';
@@ -22,16 +23,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var controller = GlobalController.i;
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       GetApiService.getInformations();
+      GetApiService.getuserProfile();
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    controller.stateBar.value = 1;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -153,7 +158,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: CustomBottomAppbar(),
+      bottomNavigationBar: CustomBottomAppbar(
+        index: 1,
+      ),
     );
   }
 }

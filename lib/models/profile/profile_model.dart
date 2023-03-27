@@ -27,6 +27,18 @@ class ProfileModel implements ModelFactory {
     required this.profile_picture,
   });
 
+  ProfileModel.init({
+    this.CreatedAt = "",
+    this.UpdatedAt = "",
+    this.email = "",
+    this.id = "",
+    this.name = "",
+    this.password = "",
+    this.phone = "",
+    this.point = 0,
+    this.profile_picture = "",
+  });
+
   factory ProfileModel.fromJson(Map<String, dynamic> json) =>
       _$ProfileModelFromJson(json);
   Map<String, dynamic> toJson() => _$ProfileModelToJson(this);

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
-class BackdropHome extends StatefulWidget {
-  const BackdropHome({super.key});
+class BackdropHome extends StatelessWidget {
+  var controller = GlobalController.i;
+  BackdropHome({super.key});
 
-  @override
-  State<BackdropHome> createState() => _BackdropHomeState();
-}
-
-class _BackdropHomeState extends State<BackdropHome> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,11 +29,13 @@ class _BackdropHomeState extends State<BackdropHome> {
             "Hello,",
             style: h4TextStyle(color: ColorConstants.slate[25]),
           ),
-          Text(
-            "Jennifer",
-            style: h2TextStyle(
-              color: ColorConstants.slate[25],
-              weight: FontWeight.w800,
+          Obx(
+            () => Text(
+              controller.profile.value.name,
+              style: h2TextStyle(
+                color: ColorConstants.slate[25],
+                weight: FontWeight.w800,
+              ),
             ),
           ),
           SizedBox(height: 13),
@@ -86,7 +86,6 @@ class _BackdropHomeState extends State<BackdropHome> {
                                 color: Colors.white,
                                 size: 16,
                               ),
-                              SizedBox(width: 18)
                             ],
                           ),
                           Row(
@@ -99,23 +98,29 @@ class _BackdropHomeState extends State<BackdropHome> {
                                 size: 18,
                               ),
                               SizedBox(width: 5),
-                              Text(
-                                "500",
-                                style: h1TextStyle(
-                                  weight: FontWeight.bold,
-                                  color: Colors.white,
+                              Obx(
+                                () => Text(
+                                  "${controller.profile.value.point}",
+                                  style: h1TextStyle(
+                                    weight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                              SizedBox(width: 18)
                             ],
                           ),
                           SizedBox(height: 10),
-                          LinearProgressIndicator(
-                            color: ColorConstants.secondary[600],
-                            backgroundColor: ColorConstants.slate[800],
-                            minHeight: 5,
-                            value: 0.6,
-                          )
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: LinearProgressIndicator(
+                              color: ColorConstants.secondary[600],
+                              backgroundColor: ColorConstants.slate[800],
+                              minHeight: 5,
+                              value: (controller.profile.value.point / 500) > 1
+                                  ? 1
+                                  : controller.profile.value.point / 500,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -140,7 +145,7 @@ class _BackdropHomeState extends State<BackdropHome> {
                           SizedBox(width: 5),
                           Flexible(
                             child: Text(
-                              "Collect 150 chips before July 31st to get special treasure!",
+                              "Collect 500 chips before July 31st to get special treasure!",
                               style: TextStyle(
                                 fontSize: 10,
                                 color: ColorConstants.slate[25],

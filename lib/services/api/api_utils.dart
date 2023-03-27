@@ -1,5 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/api/app_token.dart';
 
 class ApiUtils {
@@ -22,5 +25,17 @@ class ApiUtils {
       textColor: Colors.white,
       fontSize: 16.0,
     );
+  }
+
+  static bool logout(Response<dynamic> response) {
+    if (response.data['error'] != null &&
+        response.data['error'].toString().toLowerCase().contains("token")) {
+      AppToken.clearToken();
+      AdminToken.clearToken();
+      UserToken.clearToken();
+      Get.offAllNamed(RoutePage.onBoarding);
+      return true;
+    }
+    return false;
   }
 }

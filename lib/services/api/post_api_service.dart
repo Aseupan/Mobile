@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
 import 'package:mobile/models/login/login.dart';
 import 'package:mobile/models/response.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/api/api_utils.dart';
 import 'package:mobile/services/api/base_url.dart';
 import 'package:mobile/services/api/app_token.dart';
@@ -29,6 +30,7 @@ class PostApiService {
       } else {
         AdminToken.setToken(response.data!.token);
       }
+      Get.offAllNamed(RoutePage.home);
     } on DioError catch (e) {
       if (e.response != null) {
         final response = e.response!;
