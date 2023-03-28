@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/views/rewards/widgets/redeem_card.dart';
 import 'package:mobile/widgets/text_styles.dart';
@@ -22,14 +23,27 @@ class RedeemChips extends StatelessWidget {
           ),
         ),
         SizedBox(height: 16),
-        Wrap(
-          runSpacing: 20,
-          direction: Axis.horizontal,
-          children: [
-            ...controller.redeems
-                .map((data) => RedeemCard(data: data))
-                .toList(),
-          ],
+        Obx(
+          () => controller.redeems.isEmpty
+              ? SizedBox(
+                  height: 70,
+                  width: 100.w,
+                  child: Center(
+                    child: Text(
+                      'there is no redeem rewards right now. Comeback later',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                )
+              : Wrap(
+                  runSpacing: 20,
+                  direction: Axis.horizontal,
+                  children: [
+                    ...controller.redeems
+                        .map((data) => RedeemCard(data: data))
+                        .toList(),
+                  ],
+                ),
         )
       ],
     );

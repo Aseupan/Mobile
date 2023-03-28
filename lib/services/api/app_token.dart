@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class UserToken {
@@ -41,7 +42,7 @@ class AppToken {
 
   static bool checkToken() {
     final storage = GetStorage();
-    if (storage.read('app_token') == null && storage.read('app_token') == "") {
+    if (storage.read('app_token') == null || storage.read('app_token') == "") {
       return false;
     }
     return true;

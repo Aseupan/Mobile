@@ -17,6 +17,7 @@ import 'package:mobile/views/home/home_screen.dart';
 import 'package:mobile/views/launch/splash_screen.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/views/launch/onboarding_screen.dart';
+import 'package:mobile/views/profile/profile_screen.dart';
 import 'package:mobile/views/rewards/reward_screen.dart';
 
 List<GetPage<dynamic>> appRouter() {
@@ -78,5 +79,9 @@ List<GetPage<dynamic>> appRouter() {
       name: RoutePage.reward,
       page: () => RewardScreen(),
     ),
+    GetPage(
+      name: RoutePage.profile,
+      page: () => UserProfileScreen(),
+    )
   ];
 }

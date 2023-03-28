@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/controller/home/home_controller.dart';
 import 'package:mobile/routes/app_routes.dart';
+import 'package:mobile/services/api/api_utils.dart';
 import 'package:mobile/services/api/app_token.dart';
 import 'package:mobile/services/api/get_api_service.dart';
 import 'package:mobile/utils/color_constants.dart';
@@ -35,8 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    controller.stateBar.value = 1;
-
     return Scaffold(
       body: Stack(
         children: [

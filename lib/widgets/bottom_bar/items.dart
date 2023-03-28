@@ -60,7 +60,7 @@ class BottomBarItem extends StatelessWidget {
         // Get.toNamed(RoutePage.);
         break;
       case 4:
-        // Get.toNamed()
+        Get.toNamed(RoutePage.profile);
         break;
       default:
         Get.toNamed(RoutePage.home);
