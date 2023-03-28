@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/services/api/post_api_service.dart';
+import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/utils/input_validator.dart';
 import 'package:mobile/widgets/custom_appbar.dart';
 import 'package:mobile/widgets/custom_textfield.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
-class NewAddressScreen extends StatefulWidget {
-  const NewAddressScreen({super.key});
+class ChangeAddressScreen extends StatefulWidget {
+  const ChangeAddressScreen({super.key});
 
   @override
-  State<NewAddressScreen> createState() => _NewAddressScreenState();
+  State<ChangeAddressScreen> createState() => _ChangeAddressScreenState();
 }
 
-class _NewAddressScreenState extends State<NewAddressScreen> {
-  bool isPrimary = false;
+class _ChangeAddressScreenState extends State<ChangeAddressScreen> {
   final _formKey = GlobalKey<FormState>();
+  GlobalController controller = GlobalController.i;
+  final id = Get.parameters['id'];
 
+  bool initialPrimary = false;
+  bool isPrimary = false;
   Map<String, TextEditingController> formData = {
     'name': TextEditingController(),
     'phone': TextEditingController(),
@@ -27,15 +35,68 @@ class _NewAddressScreenState extends State<NewAddressScreen> {
     'detailed_address': TextEditingController(),
   };
 
-  void addAddress() {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      var currentAddress =
+          controller.address.firstWhere((e) => e.index == num.parse(id!));
+
+      setState(() {
+        formData['name']!.text = currentAddress.name;
+        formData['phone']!.text = currentAddress.phone;
+        formData['address']!.text = currentAddress.address;
+        formData['zip_code']!.text = currentAddress.zip_code;
+        formData['state']!.text = currentAddress.state;
+        formData['city']!.text = currentAddress.city;
+        formData['detailed_address']!.text = currentAddress.detailed_address;
+        formData['disctrict']!.text = currentAddress.disctrict;
+        isPrimary = currentAddress.primary_address;
+        initialPrimary = currentAddress.primary_address;
+      });
+    });
+  }
+
+  bool currentPrimary() {
+    return initialPrimary ? false : isPrimary;
+  }
+
+  void changeAddress() {
     var copyFormData = formData.map((key, value) => MapEntry(key, value.text));
-    PostApiService.addNewAddress(copyFormData, isPrimary: isPrimary);
+    PostApiService.changeAddress(
+      copyFormData,
+      id!,
+      isPrimary: currentPrimary(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar("Create New Address"),
+      // appBar: CustomAppBar("Change Address"),
+
+      appBar: CustomAppBar(
+        "Change Address",
+        actions: [
+          !initialPrimary
+              ? InkWell(
+                  onTap: () {
+                    PostApiService.deleteAddress(id!);
+                  },
+                  child: Center(
+                    child: Text(
+                      "Delete",
+                      style: body6TextStyle(
+                        color: ColorConstants.error,
+                        weight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                )
+              : SizedBox(),
+          SizedBox(width: 20),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
@@ -97,8 +158,8 @@ class _NewAddressScreenState extends State<NewAddressScreen> {
                 CustomTextfield(
                   label: "Zip Code",
                   controller: formData['zip_code']!,
-                  placeholder: "Input your zip code",
                   keyboardType: TextInputType.number,
+                  placeholder: "Input your zip code",
                   validator: (e) =>
                       inputValidator(e, "Please enter your Zip Code Number"),
                 ),
@@ -112,7 +173,7 @@ class _NewAddressScreenState extends State<NewAddressScreen> {
                 Row(
                   children: [
                     Switch(
-                      value: isPrimary,
+                      value: initialPrimary ? true : isPrimary,
                       onChanged: (current) {
                         setState(() {
                           isPrimary = current;
@@ -135,13 +196,15 @@ class _NewAddressScreenState extends State<NewAddressScreen> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      addAddress();
+                      changeAddress();
                     }
                   },
                   child: Text(
-                    'Create New Address',
+                    'Change Address',
                     style: h4TextStyle(
-                        weight: FontWeight.w600, color: Colors.white),
+                      weight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],

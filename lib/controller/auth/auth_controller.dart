@@ -25,8 +25,6 @@ class AuthController extends GetxController {
   }.obs;
 
   void login() async {
-    print('coba login');
-
     final loginFormCopy =
         loginForm.map((key, value) => MapEntry(key, value.text));
 
@@ -34,7 +32,6 @@ class AuthController extends GetxController {
   }
 
   void register() async {
-    print('asdasdasd');
     final registerFormCopy =
         registerForm.map((key, value) => MapEntry(key, value.text));
 

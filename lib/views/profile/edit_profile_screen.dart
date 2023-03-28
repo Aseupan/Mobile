@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/profile/edit_profile_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
+import 'package:mobile/views/profile/widgets/photo_profile.dart';
 import 'package:mobile/widgets/custom_appbar.dart';
 import 'package:mobile/widgets/custom_textfield.dart';
 import 'package:mobile/widgets/text_styles.dart';
@@ -92,7 +93,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   bool _isEdited = false;
   @override
   Widget build(BuildContext context) {
-    print(_isEdited);
     return WillPopScope(
       onWillPop: () {
         if (!_isEdited) {
@@ -122,25 +122,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             child: Form(
               key: _formKey,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
-                  Center(
-                    child: Image.asset(
-                      "assets/images/dummy_profile.png",
-                      width: 115,
-                      height: 115,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(height: 12),
-                  InkWell(
-                    child: Text(
-                      'Set photo profile',
-                      style: body6TextStyle(color: ColorConstants.slate[400]),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+                  AddPhotoProfile(),
                   SizedBox(height: 25),
                   SizedBox(
                     height: 400,
@@ -207,6 +192,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: Size(100.w, 40),
+                    ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         controller.editProfile();

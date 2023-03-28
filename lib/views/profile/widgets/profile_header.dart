@@ -54,12 +54,33 @@ class ProfileHeader extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Image.asset(
-                "assets/images/dummy_profile.png",
-                width: 68,
-                height: 68,
-                fit: BoxFit.cover,
-              ),
+              // Image.asset(
+              //   "assets/images/dummy_profile.png",
+              //   width: 68,
+              //   height: 68,
+              //   fit: BoxFit.cover,
+              // ),
+              Obx(() {
+                var profile = controller.profile.value.profile_picture;
+                if (profile == "") {
+                  return Image.asset(
+                    "assets/images/dummy_profile.png",
+                    width: 68,
+                    height: 68,
+                    fit: BoxFit.cover,
+                  );
+                } else {
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(60),
+                    child: Image.network(
+                      controller.profile.value.profile_picture,
+                      width: 68,
+                      height: 68,
+                      fit: BoxFit.cover,
+                    ),
+                  );
+                }
+              }),
               SizedBox(width: 18),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

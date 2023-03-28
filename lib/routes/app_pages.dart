@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:mobile/controller/home/home_binding.dart';
 import 'package:mobile/controller/profile/edit_profile_binding.dart';
+import 'package:mobile/views/address/change_address_screen.dart';
 import 'package:mobile/views/address/myaddress_screen.dart';
 import 'package:mobile/views/address/new_address_screen.dart';
 import 'package:mobile/views/auth/auth_binding.dart';
@@ -87,6 +88,10 @@ List<GetPage<dynamic>> appRouter() {
       name: RoutePage.editProfile,
       page: () => EditProfileScreen(),
       binding: EditProfileBinding(),
+    ),
+    GetPage(
+      name: "/address/edit/:id",
+      page: () => ChangeAddressScreen(),
     )
   ];
 }

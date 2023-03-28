@@ -18,6 +18,8 @@ class EditProfileController extends GetxController {
     "phone": TextEditingController(),
   }.obs;
 
+  RxString profile_picture = "".obs;
+
   RxBool isEdited = false.obs;
 
   @override
@@ -27,6 +29,7 @@ class EditProfileController extends GetxController {
     data['name']!.text = globalController.profile.value.name;
     data['email']!.text = globalController.profile.value.email;
     data['phone']!.text = globalController.profile.value.phone;
+    profile_picture.value = globalController.profile.value.profile_picture;
   }
 
   void editProfile() {

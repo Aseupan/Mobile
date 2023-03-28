@@ -8,6 +8,7 @@ class CustomTextfield extends StatelessWidget {
   String placeholder;
   void Function(String)? onChange;
   TextInputType? keyboardType = TextInputType.text;
+  int maxLines = 1;
 
   CustomTextfield({
     super.key,
@@ -17,6 +18,7 @@ class CustomTextfield extends StatelessWidget {
     this.onChange,
     this.validator,
     this.keyboardType,
+    this.maxLines = 1,
   });
 
   @override
@@ -36,6 +38,7 @@ class CustomTextfield extends StatelessWidget {
           onChanged: onChange,
           validator: validator,
           keyboardType: keyboardType,
+          maxLines: maxLines,
         ),
       ],
     );

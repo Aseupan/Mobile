@@ -7,6 +7,10 @@ class RoutePage {
   static const String registerBigparty = "/b/register";
   static const String myAddress = "/address";
   static const String createAddress = "/address/create";
+  static String editAddress(num id) {
+    return "/address/edit/$id";
+  }
+
   static const String reward = "/reward";
   static const String profile = "/profile";
   static const String editProfile = "/profile/edit";

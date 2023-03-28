@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:mobile/controller/global/address_model.dart';
+import 'package:mobile/models/address/address_model.dart';
 import 'package:mobile/models/profile/profile_model.dart';
 import 'package:mobile/models/reward/redeem_reward_model.dart';
 
@@ -8,7 +8,7 @@ class GlobalController extends GetxController {
 
   Rx<ProfileModel> profile = ProfileModel.init().obs;
 
-  RxList<Address> address = <Address>[].obs;
+  RxList<AddressModel> address = <AddressModel>[].obs;
 
   RxInt stateBar = 1.obs;
 

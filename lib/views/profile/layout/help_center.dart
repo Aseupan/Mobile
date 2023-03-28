@@ -22,67 +22,87 @@ class HelpCenter extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 9, horizontal: 12),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Icon(
-                    Icons.headset_mic,
-                    size: 15,
-                  ),
-                  SizedBox(width: 18),
-                  Expanded(
-                    child: Text(
-                      'Customer Help Center',
-                      style: body6TextStyle(
-                        weight: FontWeight.w500,
+              InkWell(
+                onTap: () {},
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 6),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.headset_mic,
+                        size: 15,
                       ),
-                    ),
+                      SizedBox(width: 18),
+                      Expanded(
+                        child: Text(
+                          'Customer Help Center',
+                          style: body6TextStyle(
+                            weight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      Icon(Icons.chevron_right, size: 20),
+                    ],
                   ),
-                  Icon(Icons.chevron_right, size: 20),
-                ],
+                ),
               ),
               Divider(
                 thickness: 1,
                 color: ColorConstants.slate[400],
+                height: 5,
               ),
-              Row(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/faq.svg",
-                    width: 15,
-                  ),
-                  SizedBox(width: 18),
-                  Expanded(
-                    child: Text(
-                      'Change Password',
-                      style: body6TextStyle(
-                        weight: FontWeight.w500,
+              InkWell(
+                onTap: () {},
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 6),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/faq.svg",
+                        width: 15,
                       ),
-                    ),
+                      SizedBox(width: 18),
+                      Expanded(
+                        child: Text(
+                          'Change Password',
+                          style: body6TextStyle(
+                            weight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      Icon(Icons.chevron_right, size: 20),
+                    ],
                   ),
-                  Icon(Icons.chevron_right, size: 20),
-                ],
+                ),
               ),
               Divider(
                 thickness: 1,
                 color: ColorConstants.slate[400],
+                height: 5,
               ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.language,
-                    size: 15,
-                  ),
-                  SizedBox(width: 18),
-                  Expanded(
-                    child: Text(
-                      'Change Language',
-                      style: body6TextStyle(
-                        weight: FontWeight.w500,
+              InkWell(
+                onTap: () {},
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 6),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.language,
+                        size: 15,
                       ),
-                    ),
+                      SizedBox(width: 18),
+                      Expanded(
+                        child: Text(
+                          'Change Language',
+                          style: body6TextStyle(
+                            weight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      Icon(Icons.chevron_right, size: 20),
+                    ],
                   ),
-                  Icon(Icons.chevron_right, size: 20),
-                ],
+                ),
               ),
             ],
           ),

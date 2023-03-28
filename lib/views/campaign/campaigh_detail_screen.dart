@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/custom_appbar.dart';
 import 'package:mobile/widgets/text_styles.dart';
@@ -172,7 +173,9 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
                     width: 100.w,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(RoutePage.foodDetail(1));
+                      },
                       child: Text(
                         "Donate!",
                         style: h4TextStyle(

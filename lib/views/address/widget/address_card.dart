@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mobile/models/address/address_model.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
 class AddressCard extends StatelessWidget {
   final bool isPrimary;
+  AddressModel data;
 
-  AddressCard({super.key, required this.isPrimary});
+  AddressCard({super.key, required this.isPrimary, required this.data});
 
   final Widget primaryWidget = Container(
     decoration: BoxDecoration(
@@ -28,46 +32,55 @@ class AddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Text(
-                  'Jennifer Laurent',
-                  overflow: TextOverflow.ellipsis,
-                  style: body5TextStyle(weight: FontWeight.bold),
+    return InkWell(
+      onTap: () {
+        Get.toNamed(RoutePage.editAddress(data.index));
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: 130,
+                  child: Text(
+                    data.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: body5TextStyle(weight: FontWeight.bold),
+                  ),
                 ),
-              ),
-              Container(
-                width: 1,
-                height: 13,
-                color: ColorConstants.slate[400],
-              ),
-              Text(
-                '(+62) 812-3456-7890',
-                style: body6TextStyle(
+                Container(
+                  width: 1,
+                  height: 13,
                   color: ColorConstants.slate[400],
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: 14),
-          Text(
-            'Jl. Soekarno Hatta No. 170\nKlojen, Kota Malang, Jawa Timur, 65115',
-            style: body6TextStyle(weight: FontWeight.w600),
-          ),
-          SizedBox(height: 13),
-          isPrimary ? primaryWidget : Container(),
-        ],
+                Expanded(
+                  child: Text(
+                    data.phone,
+                    style: body6TextStyle(
+                      color: ColorConstants.slate[400],
+                    ),
+                    textAlign: TextAlign.end,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 14),
+            Text(
+              "${data.address}\n${data.state}, ${data.city}, ${data.disctrict}, ${data.zip_code}",
+              style: body6TextStyle(weight: FontWeight.w500),
+            ),
+            SizedBox(height: 13),
+            data.primary_address ? primaryWidget : Container(),
+          ],
+        ),
       ),
     );
   }

@@ -6,7 +6,6 @@ import 'package:mobile/routes/app_pages.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/api/app_token.dart';
 import 'package:mobile/services/global_theme.dart';
-import 'package:mobile/widgets/double_back_close.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -31,7 +30,6 @@ class MyApp extends StatelessWidget {
               FocusManager.instance.primaryFocus?.unfocus();
             },
             child: GetMaterialApp(
-              // TODO: CHANGE THIS TITLE
               initialBinding: GlobalBinding(),
               title: 'GSC Berkah',
               theme: GlobalTheme(),
@@ -42,7 +40,6 @@ class MyApp extends StatelessWidget {
                 return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
                   child: child ?? Container(),
-                  // child: DoubleBackToCloseApp(child: child ?? Container()),
                 );
               },
             ),

@@ -1,3 +1,4 @@
+import 'package:mobile/models/address/address_model.dart';
 import 'package:mobile/models/home/information_card.dart';
 import 'package:mobile/models/login/login.dart';
 import 'package:mobile/models/profile/profile_model.dart';
@@ -15,6 +16,8 @@ abstract class ModelFactory {
       return ProfileModel.fromJson(json);
     } else if (strType == (RedeemRewardModel).toString()) {
       return RedeemRewardModel.fromJson(json);
+    } else if (strType == (AddressModel).toString()) {
+      return AddressModel.fromJson(json);
     } else {
       throw UnimplementedError('`$type` factory unimplemented.');
     }
