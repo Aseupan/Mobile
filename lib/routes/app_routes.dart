@@ -9,6 +9,7 @@ class RoutePage {
   static const String createAddress = "/address/create";
   static const String reward = "/reward";
   static const String profile = "/profile";
+  static const String editProfile = "/profile/edit";
 
   // Phase 2
   static const String home = "/home";

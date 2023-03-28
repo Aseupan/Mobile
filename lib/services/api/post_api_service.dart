@@ -4,7 +4,9 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/models/login/login.dart';
+import 'package:mobile/models/profile/profile_model.dart';
 import 'package:mobile/models/response.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/api/api_utils.dart';
@@ -66,6 +68,32 @@ class PostApiService {
         // Handle network error
         if (e.message != null) ApiUtils.showAlert(e.message!);
         throw Exception("Network error: ${e.message}");
+      }
+    }
+  }
+
+  static void updateProfile(Map<String, String> data) async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      var request =
+          await api.patch("$BASE_URL/api/profile", data: jsonEncode(data));
+
+      ApiResponse<ProfileModel> response = ApiResponse.fromJson(request.data);
+      var controller = GlobalController.i;
+      controller.profile.value = response.data!;
+
+      ApiUtils.showAlert(response.message, isSuccess: true);
+      Get.back();
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
       }
     }
   }

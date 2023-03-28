@@ -1,7 +1,6 @@
-// class AppRouter {}
-
 import 'package:get/get.dart';
 import 'package:mobile/controller/home/home_binding.dart';
+import 'package:mobile/controller/profile/edit_profile_binding.dart';
 import 'package:mobile/views/address/myaddress_screen.dart';
 import 'package:mobile/views/address/new_address_screen.dart';
 import 'package:mobile/views/auth/auth_binding.dart';
@@ -17,6 +16,7 @@ import 'package:mobile/views/home/home_screen.dart';
 import 'package:mobile/views/launch/splash_screen.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/views/launch/onboarding_screen.dart';
+import 'package:mobile/views/profile/edit_profile_screen.dart';
 import 'package:mobile/views/profile/profile_screen.dart';
 import 'package:mobile/views/rewards/reward_screen.dart';
 
@@ -82,6 +82,11 @@ List<GetPage<dynamic>> appRouter() {
     GetPage(
       name: RoutePage.profile,
       page: () => UserProfileScreen(),
+    ),
+    GetPage(
+      name: RoutePage.editProfile,
+      page: () => EditProfileScreen(),
+      binding: EditProfileBinding(),
     )
   ];
 }

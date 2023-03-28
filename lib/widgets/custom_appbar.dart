@@ -3,13 +3,19 @@ import 'package:get/get.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
-AppBar CustomAppBar(String title) {
+AppBar CustomAppBar(String title,
+    {bool canBack = true, void Function()? feedback}) {
+  feedback ??= () {};
   return AppBar(
     leading: Row(
       children: [
         IconButton(
           onPressed: () {
-            Get.back();
+            if (canBack) {
+              Get.back();
+            } else {
+              feedback!();
+            }
           },
           icon: Icon(
             Icons.arrow_back,

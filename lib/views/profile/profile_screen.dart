@@ -19,20 +19,22 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(height: 58),
-            ProfileHeader(),
-            SizedBox(height: 25),
-            AccountSettings(),
-            SizedBox(height: 25),
-            HelpCenter(),
-            SizedBox(height: 25),
-            AboutProfile(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(height: 58),
+              ProfileHeader(),
+              SizedBox(height: 25),
+              AccountSettings(),
+              SizedBox(height: 25),
+              HelpCenter(),
+              SizedBox(height: 25),
+              AboutProfile(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomBottomAppbar(index: 4),

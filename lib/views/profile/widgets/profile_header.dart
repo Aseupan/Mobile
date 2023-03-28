@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/global/global_controller.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/api/app_token.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/profile/layout/button_buy_chips.dart';
@@ -26,7 +27,9 @@ class ProfileHeader extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(RoutePage.editProfile);
+              },
               child: Container(
                 padding: EdgeInsets.only(bottom: 2),
                 decoration: BoxDecoration(
