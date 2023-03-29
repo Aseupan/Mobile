@@ -32,7 +32,7 @@ class RewardBackdrop extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 58),
+                SizedBox(height: 60),
                 Text(
                   'Rewards',
                   style: h1TextStyle(
@@ -106,7 +106,7 @@ class RewardBackdrop extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 100),
+                    // SizedBox(height: 100),
                   ],
                 ),
               ],

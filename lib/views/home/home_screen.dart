@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       GetApiService.getInformations();
       GetApiService.getuserProfile();
       GetApiService.getAllAddresses();
+      GetApiService.getAllChips();
     });
   }
 

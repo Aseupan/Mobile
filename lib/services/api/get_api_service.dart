@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:mobile/controller/chips/chips_controller.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/controller/home/home_controller.dart';
 import 'package:mobile/models/address/address_model.dart';
+import 'package:mobile/models/chips/cart_response_model.dart';
+import 'package:mobile/models/chips/chips_model.dart';
 import 'package:mobile/models/home/information_card.dart';
 import 'package:mobile/models/profile/profile_model.dart';
 import 'package:mobile/models/response.dart';
@@ -95,6 +98,55 @@ class GetApiService {
       GlobalController controller = GlobalController.i;
 
       controller.address.value = response.data!;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+    }
+  }
+
+  static void getAllChips() async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      var request = await api.get("$BASE_URL/api/credit-store/all");
+
+      ApiResponses<ChipsModel> response = ApiResponses.fromJson(request.data);
+      GlobalController controller = GlobalController.i;
+
+      controller.chips.value = response.data!;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+    }
+  }
+
+  static void getCart() async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      var request = await api.get("$BASE_URL/api/credit-store/view-cart");
+
+      ApiResponse<CartResponseModel> response =
+          ApiResponse.fromJson(request.data);
+      ChipsController controller = ChipsController.i;
+
+      controller.carts.value = response.data!.cart;
+      controller.total.value = response.data!.total;
+      controller.totalPoints.value = response.data!.totalPoints;
     } on DioError catch (e) {
       if (e.response != null) {
         final response = e.response!;

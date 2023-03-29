@@ -243,4 +243,71 @@ class PostApiService {
       }
     }
   }
+
+  static void addToCart(num id) async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      var request = await api.post(
+        "$BASE_URL/api/credit-store/add-amount/$id",
+      );
+
+      ApiUtils.showAlert(request.data['message'], isSuccess: true);
+      GetApiService.getCart();
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+    }
+  }
+
+  static void addOneItemCart(num id) async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      await api.post(
+        "$BASE_URL/api/credit-store/add-amount/$id",
+      );
+
+      GetApiService.getCart();
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+    }
+  }
+
+  static void removeOneItemCart(num id) async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      await api.post(
+        "$BASE_URL/api/credit-store/remove-amount/$id",
+      );
+
+      GetApiService.getCart();
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+    }
+  }
 }

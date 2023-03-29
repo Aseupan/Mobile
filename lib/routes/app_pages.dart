@@ -13,6 +13,9 @@ import 'package:mobile/views/campaign/campaign_binding.dart';
 import 'package:mobile/views/campaign/campaign_list_screen.dart';
 import 'package:mobile/views/campaign/food_campaign_screen.dart';
 import 'package:mobile/views/campaign/pickup/pickup_detail_screen.dart';
+import 'package:mobile/views/chips/chips_purchase_screen.dart';
+import 'package:mobile/views/chips/chips_store_screen.dart';
+import 'package:mobile/views/chips/mycart_screen.dart';
 import 'package:mobile/views/home/home_screen.dart';
 import 'package:mobile/views/launch/splash_screen.dart';
 import 'package:mobile/routes/app_routes.dart';
@@ -20,6 +23,7 @@ import 'package:mobile/views/launch/onboarding_screen.dart';
 import 'package:mobile/views/profile/edit_profile_screen.dart';
 import 'package:mobile/views/profile/profile_screen.dart';
 import 'package:mobile/views/rewards/reward_screen.dart';
+import 'package:mobile/controller/chips/chips_binding.dart';
 
 List<GetPage<dynamic>> appRouter() {
   return <GetPage<dynamic>>[
@@ -92,6 +96,21 @@ List<GetPage<dynamic>> appRouter() {
     GetPage(
       name: "/address/edit/:id",
       page: () => ChangeAddressScreen(),
-    )
+    ),
+    GetPage(
+      name: RoutePage.chips,
+      page: () => ChipsStoreScreen(),
+      binding: ChipsBinding(),
+    ),
+    GetPage(
+      name: RoutePage.chipsCart,
+      page: () => MyCartScreen(),
+      binding: ChipsBinding(),
+    ),
+    GetPage(
+      name: RoutePage.chipsPurchase,
+      page: () => ChipsPurchaseScreen(),
+      binding: ChipsBinding(),
+    ),
   ];
 }

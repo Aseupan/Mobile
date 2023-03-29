@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
@@ -7,8 +9,11 @@ class ButtonBuyChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
+    return GestureDetector(
+      onTap: () {
+        print('asdasdasd');
+        Get.toNamed(RoutePage.chips);
+      },
       child: Container(
         decoration: BoxDecoration(
           color: ColorConstants.flowerBlue[600],

@@ -37,6 +37,6 @@ AppBar CustomAppBar(String title,
       ),
     ),
     backgroundColor: ColorConstants.slate[25],
-    elevation: 0.3,
+    elevation: 0,
   );
 }

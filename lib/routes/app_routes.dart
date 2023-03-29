@@ -15,6 +15,10 @@ class RoutePage {
   static const String profile = "/profile";
   static const String editProfile = "/profile/edit";
 
+  static const String chips = "/chips";
+  static const String chipsCart = "/chips/carts";
+  static const String chipsPurchase = "/chips/purchase";
+
   // Phase 2
   static const String home = "/home";
   static const String campaignList = "/campaign";
