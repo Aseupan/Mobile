@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/controller/global/company_controller.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
@@ -7,6 +8,7 @@ import 'package:sizer/sizer.dart';
 
 class BackdropHome extends StatelessWidget {
   var controller = GlobalController.i;
+  var company = CompanyController.i;
   BackdropHome({super.key});
 
   @override
@@ -31,7 +33,9 @@ class BackdropHome extends StatelessWidget {
           ),
           Obx(
             () => Text(
-              controller.profile.value.name,
+              controller.isAdmin.value
+                  ? company.profile.value.company_name
+                  : controller.profile.value.name,
               style: h2TextStyle(
                 color: ColorConstants.slate[25],
                 weight: FontWeight.w800,

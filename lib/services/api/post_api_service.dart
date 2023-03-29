@@ -5,9 +5,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
+import 'package:mobile/controller/global/company_controller.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/models/address/address_model.dart';
 import 'package:mobile/models/login/login.dart';
+import 'package:mobile/models/profile/company_profile_model.dart';
 import 'package:mobile/models/profile/profile_model.dart';
 import 'package:mobile/models/response.dart';
 import 'package:mobile/routes/app_routes.dart';
@@ -28,12 +30,14 @@ class PostApiService {
 
       ApiResponse<LoginModel> response = ApiResponse.fromJson(request.data);
       ApiUtils.showAlert('Login Successed', isSuccess: true);
-      print(response.data!.token);
+      GlobalController controller = GlobalController.i;
 
       if (response.data!.type == "user") {
         UserToken.setToken(response.data!.token);
+        controller.isAdmin.value = false;
       } else {
         AdminToken.setToken(response.data!.token);
+        controller.isAdmin.value = true;
       }
       Get.offAllNamed(RoutePage.home);
     } on DioError catch (e) {
@@ -82,12 +86,21 @@ class PostApiService {
     try {
       var request =
           await api.patch("$BASE_URL/api/profile", data: jsonEncode(data));
-
-      ApiResponse<ProfileModel> response = ApiResponse.fromJson(request.data);
       var controller = GlobalController.i;
-      controller.profile.value = response.data!;
 
-      ApiUtils.showAlert(response.message, isSuccess: true);
+      if (controller.isAdmin.value) {
+        ApiResponse<CompanyProfileModel> response =
+            ApiResponse.fromJson(request.data);
+
+        var companyController = CompanyController.i;
+        companyController.profile.value = response.data!;
+        ApiUtils.showAlert(response.message, isSuccess: true);
+      } else {
+        ApiResponse<ProfileModel> response = ApiResponse.fromJson(request.data);
+        controller.profile.value = response.data!;
+        ApiUtils.showAlert(response.message, isSuccess: true);
+      }
+
       Get.back();
     } on DioError catch (e) {
       if (e.response != null) {
@@ -112,11 +125,21 @@ class PostApiService {
       var request =
           await api.patch("$BASE_URL/api/profile/picture", data: formData);
 
-      ApiResponse<ProfileModel> response = ApiResponse.fromJson(request.data);
-
       var controller = GlobalController.i;
-      controller.profile.value = response.data!;
-      ApiUtils.showAlert(response.message, isSuccess: true);
+
+      if (controller.isAdmin.value) {
+        ApiResponse<CompanyProfileModel> response =
+            ApiResponse.fromJson(request.data);
+
+        var companyController = CompanyController.i;
+        companyController.profile.value = response.data!;
+        ApiUtils.showAlert(response.message, isSuccess: true);
+      } else {
+        ApiResponse<ProfileModel> response = ApiResponse.fromJson(request.data);
+        controller.profile.value = response.data!;
+        ApiUtils.showAlert(response.message, isSuccess: true);
+      }
+
       Get.back();
     } on DioError catch (e) {
       if (e.response != null) {
@@ -296,6 +319,33 @@ class PostApiService {
     try {
       await api.post(
         "$BASE_URL/api/credit-store/remove-amount/$id",
+      );
+
+      GetApiService.getCart();
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+    }
+  }
+
+  static void purchaseChips(int id) async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      await api.post(
+        "$BASE_URL/api/credit-store/remove-amount/$id",
+        data: jsonEncode(
+          {
+            "payment_method": id,
+          },
+        ),
       );
 
       GetApiService.getCart();

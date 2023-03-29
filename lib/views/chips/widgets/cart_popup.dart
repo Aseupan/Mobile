@@ -68,7 +68,7 @@ class CartPopup extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) => DialogChips(context));
             }
-            // Get.toNamed(RoutePage.chipsCart);
+            Get.toNamed(RoutePage.chipsPurchase);
           },
           child: Center(
             child: Icon(Icons.chevron_right, size: 40),

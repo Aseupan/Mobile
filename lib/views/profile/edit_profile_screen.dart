@@ -1,6 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/controller/global/company_controller.dart';
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/controller/profile/edit_profile_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/profile/widgets/photo_profile.dart';
@@ -18,6 +20,8 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   EditProfileController controller = EditProfileController.i;
+  GlobalController globalController = GlobalController.i;
+  CompanyController company = CompanyController.i;
   final _formKey = GlobalKey<FormState>();
 
   Future<bool> onWillPop() {
@@ -93,6 +97,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   bool _isEdited = false;
   @override
   Widget build(BuildContext context) {
+    bool isCompany = globalController.isAdmin.value;
     return WillPopScope(
       onWillPop: () {
         if (!_isEdited) {
@@ -133,7 +138,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       children: [
                         CustomTextfield(
                           label: "Name",
-                          controller: controller.data['name']!,
+                          controller: controller
+                              .data[isCompany ? 'company_name' : 'name']!,
                           placeholder: "",
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -150,7 +156,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         SizedBox(height: 20),
                         CustomTextfield(
                           label: "Emaii",
-                          controller: controller.data['email']!,
+                          controller: controller
+                              .data[isCompany ? 'company_email' : 'email']!,
                           placeholder: "",
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -173,7 +180,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         CustomTextfield(
                           keyboardType: TextInputType.number,
                           label: "Phone Number",
-                          controller: controller.data['phone']!,
+                          controller: controller
+                              .data[isCompany ? 'company_phone' : 'phone']!,
                           placeholder: "Enter your phone number",
                           validator: (value) {
                             if (value!.isEmpty) {

@@ -33,11 +33,15 @@ class ButtonBuyChips extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            Icon(
-              Icons.chevron_right,
-              color: Colors.white,
-            ),
-            SizedBox(),
+            Row(
+              children: [
+                Icon(
+                  Icons.chevron_right,
+                  color: Colors.white,
+                ),
+                SizedBox(width: 14),
+              ],
+            )
           ],
         ),
       ),

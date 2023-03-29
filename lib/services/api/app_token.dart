@@ -21,7 +21,7 @@ class UserToken {
 
   static bool checkToken() {
     final storage = GetStorage();
-    if (storage.read('user_token') == null &&
+    if (storage.read('user_token') == null ||
         storage.read('user_token') == "") {
       return false;
     }
@@ -68,7 +68,7 @@ class AdminToken {
 
   static bool checkToken() {
     final storage = GetStorage();
-    if (storage.read('admin_token') == null &&
+    if (storage.read('admin_token') == null ||
         storage.read('admin_token') == "") {
       return false;
     }

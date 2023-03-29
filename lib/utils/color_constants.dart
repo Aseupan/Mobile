@@ -54,6 +54,14 @@ class ColorConstants {
   static const success = Color(0xff2FD181);
   static const warning = Color(0xffFFD027);
 
+  static const shadow = {
+    1: BoxShadow(
+      color: Color.fromRGBO(0, 0, 0, 0.04),
+      blurRadius: 10,
+      spreadRadius: 10,
+    ),
+  };
+
   static const gradient = {
     'blue1': LinearGradient(
       begin: Alignment.topLeft,

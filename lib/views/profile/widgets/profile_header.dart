@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/controller/global/company_controller.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/routes/app_routes.dart';
-import 'package:mobile/services/api/app_token.dart';
 import 'package:mobile/utils/color_constants.dart';
-import 'package:mobile/views/profile/layout/button_buy_chips.dart';
+import 'package:mobile/views/profile/widgets/button_buy_chips.dart';
+import 'package:mobile/views/profile/widgets/button_verified.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
 class ProfileHeader extends StatelessWidget {
   GlobalController controller = GlobalController.i;
+  CompanyController company = CompanyController.i;
 
   ProfileHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
+    bool isCompany = controller.isAdmin.value;
     return Column(
       children: [
         Row(
@@ -54,14 +57,10 @@ class ProfileHeader extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Image.asset(
-              //   "assets/images/dummy_profile.png",
-              //   width: 68,
-              //   height: 68,
-              //   fit: BoxFit.cover,
-              // ),
               Obx(() {
-                var profile = controller.profile.value.profile_picture;
+                var profile = isCompany
+                    ? company.profile.value.company_picture
+                    : controller.profile.value.profile_picture;
                 if (profile == "") {
                   return Image.asset(
                     "assets/images/dummy_profile.png",
@@ -73,7 +72,7 @@ class ProfileHeader extends StatelessWidget {
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(60),
                     child: Image.network(
-                      controller.profile.value.profile_picture,
+                      profile,
                       width: 68,
                       height: 68,
                       fit: BoxFit.cover,
@@ -90,36 +89,119 @@ class ProfileHeader extends StatelessWidget {
                     width: 60.w,
                     child: Obx(
                       () => Text(
-                        controller.profile.value.name,
+                        isCompany
+                            ? company.profile.value.company_name
+                            : controller.profile.value.name,
                         style: h4TextStyle(weight: FontWeight.bold),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ),
                   Obx(() {
-                    var data = controller.profile.value.phone;
+                    var data = isCompany
+                        ? company.profile.value.company_phone
+                        : controller.profile.value.phone;
+
                     return Text(data.isEmpty ? '-' : data);
                   }),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: ColorConstants.primary[600],
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-                    child: Text(
-                      'Regular Food Giver',
-                      style: body6TextStyle(
-                        weight: FontWeight.w600,
-                        color: ColorConstants.slate[25],
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: ColorConstants.primary[600],
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                        child: Text(
+                          isCompany ? 'Big Party' : 'Regular Food Giver',
+                          style: body6TextStyle(
+                            weight: FontWeight.w700,
+                            color: ColorConstants.slate[25],
+                          ),
+                        ),
                       ),
-                    ),
+                      SizedBox(width: 10),
+                      isCompany
+                          ? Container(
+                              decoration: BoxDecoration(
+                                color: company.profile.value.verified
+                                    ? ColorConstants.success
+                                    : ColorConstants.error,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 2, horizontal: 8),
+                              child: Text(
+                                company.profile.value.verified
+                                    ? 'Verified'
+                                    : 'Not Verified',
+                                style: body6TextStyle(
+                                  weight: FontWeight.w700,
+                                  color: ColorConstants.slate[25],
+                                ),
+                              ),
+                            )
+                          : Container(),
+                    ],
                   ),
+                  // Obx(
+                  //   () => Row(
+                  //     children: [
+                  //       Container(
+                  //         decoration: BoxDecoration(
+                  //           color: ColorConstants.primary[600],
+                  //           borderRadius: BorderRadius.circular(5),
+                  //         ),
+                  //         padding:
+                  //             EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                  //         child: Text(
+                  //           isCompany ? 'Big Party' : 'Regular Food Giver',
+                  //           style: body6TextStyle(
+                  //             weight: FontWeight.w700,
+                  //             color: ColorConstants.slate[25],
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       SizedBox(width: 10),
+                  //       isCompany
+                  //           ? Container(
+                  //               decoration: BoxDecoration(
+                  //                 color: company.profile.value.verified
+                  //                     ? ColorConstants.success
+                  //                     : ColorConstants.error,
+                  //                 borderRadius: BorderRadius.circular(5),
+                  //               ),
+                  //               padding: EdgeInsets.symmetric(
+                  //                   vertical: 2, horizontal: 8),
+                  //               child: Text(
+                  //                 company.profile.value.verified
+                  //                     ? 'Verified'
+                  //                     : 'Not Verified',
+                  //                 style: body6TextStyle(
+                  //                   weight: FontWeight.w700,
+                  //                   color: ColorConstants.slate[25],
+                  //                 ),
+                  //               ),
+                  //             )
+                  //           : Container(),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               )
             ],
           ),
         ),
         SizedBox(height: 30),
+        isCompany && !company.profile.value.verified
+            ? ButtonVerified()
+            : Container(),
+        // Obx(() {
+        // return isCompany && !company.profile.value.verified
+        //     ? ButtonVerified()
+        //     : Container();
+        // }),
         ButtonBuyChips(),
       ],
     );

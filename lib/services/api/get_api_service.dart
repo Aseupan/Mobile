@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:mobile/controller/chips/chips_controller.dart';
+import 'package:mobile/controller/global/company_controller.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/controller/home/home_controller.dart';
 import 'package:mobile/models/address/address_model.dart';
 import 'package:mobile/models/chips/cart_response_model.dart';
 import 'package:mobile/models/chips/chips_model.dart';
 import 'package:mobile/models/home/information_card.dart';
+import 'package:mobile/models/profile/company_profile_model.dart';
 import 'package:mobile/models/profile/profile_model.dart';
 import 'package:mobile/models/response.dart';
 import 'package:mobile/models/reward/redeem_reward_model.dart';
@@ -48,10 +50,18 @@ class GetApiService {
 
     try {
       var request = await api.get("$BASE_URL/api/profile");
-
-      ApiResponse<ProfileModel> response = ApiResponse.fromJson(request.data);
       var controller = GlobalController.i;
-      controller.profile.value = response.data!;
+
+      if (controller.isAdmin.value) {
+        ApiResponse<CompanyProfileModel> response =
+            ApiResponse.fromJson(request.data);
+
+        var companyController = CompanyController.i;
+        companyController.profile.value = response.data!;
+      } else {
+        ApiResponse<ProfileModel> response = ApiResponse.fromJson(request.data);
+        controller.profile.value = response.data!;
+      }
     } on DioError catch (e) {
       if (e.response != null) {
         final response = e.response!;

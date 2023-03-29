@@ -30,54 +30,56 @@ class _MyCartScreenState extends State<MyCartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar("My Cart"),
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 30),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(15),
-                bottomRight: Radius.circular(15),
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  'Total Purchase',
-                  style: body5TextStyle(
-                    color: ColorConstants.slate[400],
-                    weight: FontWeight.bold,
-                  ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
                 ),
-                SizedBox(height: 10),
-                Obx(
-                  () => Text(
-                    formatToRupiah(controller.total.value),
-                    style: body1TextStyle(
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    'Total Purchase',
+                    style: body5TextStyle(
+                      color: ColorConstants.slate[400],
                       weight: FontWeight.bold,
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 25,
-              horizontal: 30,
-            ),
-            child: Obx(
-              () => Wrap(
-                runSpacing: 15,
-                children: controller.carts
-                    .map((data) => EditCartCard(data: data))
-                    .toList(),
+                  SizedBox(height: 10),
+                  Obx(
+                    () => Text(
+                      formatToRupiah(controller.total.value),
+                      style: body1TextStyle(
+                        weight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 25,
+                horizontal: 30,
+              ),
+              child: Obx(
+                () => Wrap(
+                  runSpacing: 15,
+                  children: controller.carts
+                      .map((data) => EditCartCard(data: data))
+                      .toList(),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/routes/app_routes.dart';
+import 'package:mobile/services/api/app_token.dart';
 import 'package:mobile/services/api/get_api_service.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/home/layouts/home_backdrop.dart';
@@ -26,10 +27,15 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      GetApiService.getInformations();
+      controller.isAdmin.value = AdminToken.checkToken();
+
       GetApiService.getuserProfile();
-      GetApiService.getAllAddresses();
-      GetApiService.getAllChips();
+      GetApiService.getInformations();
+
+      if (!controller.isAdmin.value) {
+        GetApiService.getAllAddresses();
+        GetApiService.getAllChips();
+      }
     });
   }
 
@@ -127,35 +133,37 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      floatingActionButton: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: ColorConstants.gradient['blue1'],
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-          ),
-          onPressed: () {},
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                "Share Your Food!",
-                style: h5TextStyle(
-                  color: Colors.white,
-                  weight: FontWeight.bold,
+      floatingActionButton: Obx(() => controller.isAdmin.value
+          ? DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: ColorConstants.gradient['blue1'],
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                ),
+                onPressed: () {},
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Share Your Food!",
+                      style: h5TextStyle(
+                        color: Colors.white,
+                        weight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 5),
+                    SvgPicture.asset("assets/icons/food.svg")
+                  ],
                 ),
               ),
-              SizedBox(width: 5),
-              SvgPicture.asset("assets/icons/food.svg")
-            ],
-          ),
-        ),
-      ),
+            )
+          : Container()),
       bottomNavigationBar: CustomBottomAppbar(
         index: 1,
       ),

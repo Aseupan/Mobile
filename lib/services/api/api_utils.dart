@@ -2,16 +2,19 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
+import 'package:mobile/controller/global/company_controller.dart';
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/api/app_token.dart';
 
 class ApiUtils {
   static Map<String, dynamic> header({bool? isAdmin = false}) {
+    isAdmin = AdminToken.checkToken();
     return {
       'Accept': 'application/json',
       'Content-type': 'application/json',
       "Authorization":
-          'Bearer ${isAdmin! ? AdminToken.getToken() : UserToken.getToken()}',
+          'Bearer ${isAdmin ? AdminToken.getToken() : UserToken.getToken()}',
     };
   }
 
@@ -37,5 +40,12 @@ class ApiUtils {
       return true;
     }
     return false;
+  }
+
+  static void signout() {
+    AppToken.clearToken();
+    AdminToken.clearToken();
+    UserToken.clearToken();
+    Get.offAllNamed(RoutePage.onBoarding);
   }
 }
