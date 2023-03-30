@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
+import 'package:mobile/views/campaign/widgets/button_create.dart';
 import 'package:mobile/views/campaign/widgets/card_campaign.dart';
+import 'package:mobile/widgets/custom_appbar.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
 class CampaignListScreen extends StatefulWidget {
@@ -11,9 +16,12 @@ class CampaignListScreen extends StatefulWidget {
 }
 
 class _CampaignListScreenState extends State<CampaignListScreen> {
+  var controller = GlobalController.i;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar('Campaign'),
       backgroundColor: ColorConstants.slate[25],
       body: SingleChildScrollView(
         child: Padding(
@@ -21,15 +29,6 @@ class _CampaignListScreenState extends State<CampaignListScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 50),
-              Text(
-                "Campaign",
-                style: h1TextStyle(
-                  weight: FontWeight.w800,
-                  color: ColorConstants.slate[900],
-                ),
-              ),
-              SizedBox(height: 16),
               Row(
                 children: [
                   Text(
@@ -103,6 +102,8 @@ class _CampaignListScreenState extends State<CampaignListScreen> {
           ),
         ),
       ),
+      floatingActionButton:
+          Obx(() => controller.isAdmin.value ? ButtonCampaign() : Container()),
     );
   }
 }

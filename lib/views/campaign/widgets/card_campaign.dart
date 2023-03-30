@@ -86,89 +86,99 @@ class _CardCampaignState extends State<CardCampaign> {
       },
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(7)),
-        child: Stack(
-          clipBehavior: Clip.hardEdge,
-          children: [
-            Container(
-              width: 100.w,
-              decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.04),
-                  blurRadius: 10,
-                  spreadRadius: 10,
+        child: Container(
+          width: 100.w,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [ColorConstants.shadow[1]!],
+          ),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(7),
+                  bottomRight: Radius.circular(7),
                 ),
-              ]),
-              child: Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(7),
-                      bottomRight: Radius.circular(7),
-                    ),
-                    child: Image(
-                      image: AssetImage('assets/images/dummy_campaign.jpg'),
-                      width: 100.w,
-                      height: 130,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 15,
-                        horizontal: 19,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(12)),
-                            child: LinearProgressIndicator(
-                              minHeight: 5,
-                              value: widget.current / widget.needs,
-                              color: ColorConstants.primary[600],
-                              backgroundColor: ColorConstants.slate[200],
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            "${widget.current} boxes food of ${widget.needs} boxes",
-                            style: body6TextStyle(
-                                color: ColorConstants.slate[500]),
-                          ),
-                          SizedBox(height: 3),
-                          Text(
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                            style: body6TextStyle(
-                              weight: FontWeight.w700,
-                              color: ColorConstants.slate[900],
-                            ),
-                          ),
-                          SizedBox(height: 7),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.calendar_month_outlined,
-                                size: 12,
-                                color: ColorConstants.slate[400],
-                              ),
-                              SizedBox(width: 8),
-                              Text(
-                                'until March 1st 2023',
-                                style: TextStyle(
-                                  color: ColorConstants.slate[400],
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 9,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      )),
-                ],
+                child: Image(
+                  image: AssetImage('assets/images/dummy_campaign.jpg'),
+                  width: 100.w,
+                  height: 130,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            Status()
-          ],
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 15,
+                  horizontal: 19,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      child: LinearProgressIndicator(
+                        minHeight: 5,
+                        value: widget.current / widget.needs,
+                        color: ColorConstants.primary[600],
+                        backgroundColor: ColorConstants.slate[200],
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      "${widget.current} boxes food of ${widget.needs} boxes",
+                      style: body6TextStyle(color: ColorConstants.slate[500]),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                      style: body6TextStyle(
+                        weight: FontWeight.w700,
+                        color: ColorConstants.slate[900],
+                      ),
+                    ),
+                    SizedBox(height: 7),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.calendar_month_outlined,
+                          size: 10,
+                          color: ColorConstants.slate[400],
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'until March 1st 2023',
+                          style: TextStyle(
+                            color: ColorConstants.slate[400],
+                            fontWeight: FontWeight.w600,
+                            fontSize: 9,
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 7),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: ColorConstants.error,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: 12,
+                      ),
+                      child: Text(
+                        'URGENTLY NEEDED!',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/campaign/campaign_controller.dart';
+import 'package:mobile/controller/campaign/types/food_detail.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/home/layouts/home_tips.dart';

@@ -15,7 +15,6 @@ class CampaignCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
       ),
-      // child: Placeholder(),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

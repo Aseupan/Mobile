@@ -21,10 +21,14 @@ class RoutePage {
 
   // Phase 2
   static const String home = "/home";
+
+  // CAMPAIGN
   static const String campaignList = "/campaign";
   static String campaignDetail(num campaignId) {
-    return '/campaign/:$campaignId';
+    return '/campaign/:$campaignId/detail';
   }
+
+  static const String createCampaign = "/campaign/create";
 
   static String foodDetail(num campaignId) {
     return '/campaign/:$campaignId/food';

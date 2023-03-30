@@ -11,6 +11,7 @@ import 'package:mobile/views/auth/register_screen.dart';
 import 'package:mobile/views/campaign/campaigh_detail_screen.dart';
 import 'package:mobile/views/campaign/campaign_binding.dart';
 import 'package:mobile/views/campaign/campaign_list_screen.dart';
+import 'package:mobile/views/campaign/create_campaign_screen.dart';
 import 'package:mobile/views/campaign/food_campaign_screen.dart';
 import 'package:mobile/views/campaign/pickup/pickup_detail_screen.dart';
 import 'package:mobile/views/chips/chips_purchase_screen.dart';
@@ -55,12 +56,17 @@ List<GetPage<dynamic>> appRouter() {
       page: () => CampaignListScreen(),
     ),
     GetPage(
-      name: '/campaign/:campaignId',
+      name: '/campaign/:campaignId/detail',
       page: () => CampaignDetailScreen(),
     ),
     GetPage(
       name: '/campaign/:campaignId/food',
       page: () => FoodCampaignScreen(),
+      binding: CampaignBinding(),
+    ),
+    GetPage(
+      name: RoutePage.createCampaign,
+      page: () => CreateCampaignScreen(),
       binding: CampaignBinding(),
     ),
     GetPage(

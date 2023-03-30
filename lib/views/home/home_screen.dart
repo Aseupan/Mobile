@@ -133,37 +133,37 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      floatingActionButton: Obx(() => controller.isAdmin.value
-          ? DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: ColorConstants.gradient['blue1'],
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  shadowColor: Colors.transparent,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                ),
-                onPressed: () {},
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      "Share Your Food!",
-                      style: h5TextStyle(
-                        color: Colors.white,
-                        weight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(width: 5),
-                    SvgPicture.asset("assets/icons/food.svg")
-                  ],
+      floatingActionButton: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: ColorConstants.gradient['blue1'],
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+          ),
+          onPressed: () {
+            Get.toNamed(RoutePage.campaignList);
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Share Your Food!",
+                style: h5TextStyle(
+                  color: Colors.white,
+                  weight: FontWeight.bold,
                 ),
               ),
-            )
-          : Container()),
+              SizedBox(width: 5),
+              SvgPicture.asset("assets/icons/food.svg")
+            ],
+          ),
+        ),
+      ),
       bottomNavigationBar: CustomBottomAppbar(
         index: 1,
       ),

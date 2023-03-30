@@ -1,21 +1,9 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-class FoodDetail {
-  var foodType = "".obs;
-  var description = "".obs;
-  RxInt quantity = 1.obs;
-  RxInt weight = 1.obs;
-  var expired = "".obs;
-  RxBool isValid = false.obs;
-
-  void checkValid() {
-    if (foodType.isEmpty || description.isEmpty || expired.isEmpty) {
-      isValid.value = false;
-    } else {
-      isValid.value = true;
-    }
-  }
-}
+import 'package:mobile/controller/campaign/types/create_campaign.dart';
+import 'package:mobile/controller/campaign/types/food_detail.dart';
 
 class PickupDetail {
   RxBool isSpecial = false.obs;
@@ -28,7 +16,8 @@ class CampaignController extends GetxController {
   static CampaignController get i => Get.find();
 
   var foodDetails = <String, FoodDetail>{}.obs;
-  // Rx<PickupDetail> pickupState = PickupDetail().obs;
 
   RxMap<String, PickupDetail> pickupState = <String, PickupDetail>{}.obs;
+
+  Rx<CreateCampaign> createCampaign = CreateCampaign().obs;
 }
