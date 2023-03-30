@@ -11,7 +11,6 @@ class ButtonBuyChips extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('asdasdasd');
         Get.toNamed(RoutePage.chips);
       },
       child: Container(

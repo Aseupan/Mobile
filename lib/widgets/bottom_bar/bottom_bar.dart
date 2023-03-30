@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/controller/global/global_controller.dart';
-import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/bottom_bar/items.dart';
 
 class CustomBottomAppbar extends StatelessWidget {
-  int index;
+  final int index;
   GlobalController controller = GlobalController.i;
 
   CustomBottomAppbar({

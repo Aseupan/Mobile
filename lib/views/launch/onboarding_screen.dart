@@ -32,7 +32,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.slate[25],
-      body: Container(
+      body: SizedBox(
         height: 100.h,
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -64,7 +64,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       ? () {
                                           setState(() {
                                             _onBoarding -= 1;
-                                            print(_onBoarding);
                                           });
                                         }
                                       : null,
@@ -95,7 +94,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       ? () {
                                           setState(() {
                                             _onBoarding += 1;
-                                            print(_onBoarding);
                                           });
                                         }
                                       : null,

@@ -12,7 +12,6 @@ class DoubleBackToCloseApp extends StatefulWidget {
 
 class _DoubleBackToCloseAppState extends State<DoubleBackToCloseApp> {
   DateTime currentBackPressTime = DateTime.now();
-  DateTime? _lastPressedAt;
   DateTime now = DateTime.now();
 
   Future<bool> onWillPop() {

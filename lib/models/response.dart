@@ -1,9 +1,12 @@
+// ignore_for_file: annotate_overrides, overridden_fields
+
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mobile/models/sources/base_response.dart';
 import 'package:mobile/models/sources/model_factory.dart';
 
 class ApiResponse<T> extends BaseResponse {
   final T? data;
+
   String? error;
 
   ApiResponse({

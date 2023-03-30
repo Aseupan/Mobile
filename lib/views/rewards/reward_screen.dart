@@ -1,7 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/services/api/get_api_service.dart';
 import 'package:mobile/utils/color_constants.dart';

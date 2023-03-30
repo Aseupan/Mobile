@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/utils/color_constants.dart';
-import 'package:mobile/widgets/animation/fadein_left_fadein_right.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,7 +11,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  double _width = 110;
+  double width = 110;
   bool state = false;
 
   @override
@@ -20,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(Duration(milliseconds: 1500), () {
       setState(() {
-        _width *= 1.2;
+        width *= 1.2;
       });
     });
   }

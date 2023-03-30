@@ -2,8 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
-import 'package:mobile/controller/global/company_controller.dart';
-import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/api/app_token.dart';
 

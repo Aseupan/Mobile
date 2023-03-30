@@ -5,13 +5,14 @@ class FadeInFromLeft extends StatefulWidget {
   final int delay;
   final Duration duration;
 
-  FadeInFromLeft(
-      {required this.child,
+  const FadeInFromLeft(
+      {super.key,
+      required this.child,
       this.delay = 0,
       this.duration = const Duration(milliseconds: 500)});
 
   @override
-  _FadeInFromLeftState createState() => _FadeInFromLeftState();
+  State<FadeInFromLeft> createState() => _FadeInFromLeftState();
 }
 
 class _FadeInFromLeftState extends State<FadeInFromLeft>

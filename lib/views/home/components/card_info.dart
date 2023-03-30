@@ -3,12 +3,11 @@ import 'package:mobile/models/home/information_card.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/utils/date_formatter.dart';
 import 'package:mobile/widgets/text_styles.dart';
-import 'package:sizer/sizer.dart';
 
 class CardInfo extends StatelessWidget {
-  InformationCard data;
+  final InformationCard data;
 
-  CardInfo({super.key, required this.data});
+  const CardInfo({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {

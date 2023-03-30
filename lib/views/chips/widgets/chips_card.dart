@@ -9,8 +9,8 @@ import 'package:mobile/widgets/text_styles.dart';
 import 'package:mobile/utils/format_rupiah.dart';
 
 class ChipsCard extends StatefulWidget {
-  ChipsModel data;
-  ChipsCard({super.key, required this.data});
+  final ChipsModel data;
+  const ChipsCard({super.key, required this.data});
 
   @override
   State<ChipsCard> createState() => _ChipsCardState();

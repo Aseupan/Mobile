@@ -4,7 +4,6 @@ import 'package:mobile/controller/campaign/campaign_controller.dart';
 import 'package:mobile/controller/campaign/types/food_detail.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
-import 'package:mobile/views/home/layouts/home_tips.dart';
 import 'package:mobile/widgets/control_counter.dart';
 import 'package:mobile/widgets/custom_appbar.dart';
 import 'package:mobile/widgets/text_styles.dart';
@@ -22,7 +21,6 @@ class FoodCampaignScreen extends StatefulWidget {
 class _FoodCampaignScreenState extends State<FoodCampaignScreen> {
   final id = Get.parameters['campaignId']!.substring(1);
 
-  num _angka = 1;
   DateTime _selectedDate = DateTime.now();
   final _dateController = TextEditingController();
   final _controller = CampaignController.i;
@@ -88,7 +86,6 @@ class _FoodCampaignScreenState extends State<FoodCampaignScreen> {
                 OutlinedButton(
                   onPressed: () {
                     Navigator.pop(context);
-                    print(id);
                   },
                   child: Text(
                     'I’m not sure',

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/campaign/campaign_controller.dart';
-import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/campaign/pickup/partials/chips_additional.dart';
 import 'package:mobile/views/campaign/pickup/partials/pickup_aggreement.dart';
 import 'package:mobile/views/campaign/pickup/partials/pickup_method.dart';

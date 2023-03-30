@@ -7,8 +7,8 @@ import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
 class BackdropHome extends StatelessWidget {
-  var controller = GlobalController.i;
-  var company = CompanyController.i;
+  final controller = GlobalController.i;
+  final company = CompanyController.i;
   BackdropHome({super.key});
 
   @override

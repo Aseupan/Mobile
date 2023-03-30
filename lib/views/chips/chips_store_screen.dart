@@ -6,7 +6,6 @@ import 'package:mobile/services/api/get_api_service.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/chips/layout/chips_store_backdrop.dart';
 import 'package:mobile/views/chips/widgets/chips_card.dart';
-import 'package:sizer/sizer.dart';
 import 'package:mobile/views/chips/widgets/cart_popup.dart';
 
 class ChipsStoreScreen extends StatefulWidget {
@@ -19,8 +18,10 @@ class ChipsStoreScreen extends StatefulWidget {
 class _ChipsStoreScreenState extends State<ChipsStoreScreen> {
   var globalController = GlobalController.i;
   ChipsController controller = ChipsController.i;
+
   @override
   void initState() {
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       GetApiService.getCart();
     });

@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mobile/controller/campaign/campaign_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/utils/image_picker.dart';
@@ -53,10 +51,8 @@ class _InsertImageState extends State<InsertImage> {
               }
 
               for (int i = 0; i < images.length; i++) {
-                print('thumbnail${i + 1}');
                 controller.data['thumbnail${i + 1}'] = images[i].path;
               }
-              print(controller.data['thumbnail1']);
 
               // controller.data['thumbnail1'] = 'ads';
               // print(controller.data['thumbnail1']);

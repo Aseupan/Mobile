@@ -10,8 +10,8 @@ import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
 class ProfileHeader extends StatelessWidget {
-  GlobalController controller = GlobalController.i;
-  CompanyController company = CompanyController.i;
+  final GlobalController controller = GlobalController.i;
+  final CompanyController company = CompanyController.i;
 
   ProfileHeader({super.key});
 

@@ -11,7 +11,7 @@ class OpacityTransitionWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _OpacityTransitionWidgetState createState() =>
+  State<OpacityTransitionWidget> createState() =>
       _OpacityTransitionWidgetState();
 }
 

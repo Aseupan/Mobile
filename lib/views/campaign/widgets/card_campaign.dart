@@ -6,15 +6,15 @@ import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
 class CardCampaign extends StatefulWidget {
-  int status = 0;
-  int needs;
-  int current;
+  final int status;
+  final int needs;
+  final int current;
   /*
     0 = gaada status
     1 = urgent needed
     2 = almost done
   */
-  CardCampaign({
+  const CardCampaign({
     super.key,
     required this.status,
     required this.current,

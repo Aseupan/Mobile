@@ -7,7 +7,6 @@ import 'package:mobile/widgets/animation/fadein_left.dart';
 import 'package:mobile/widgets/animation/opacity_transition.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SectionOnboarding3 extends StatefulWidget {
   const SectionOnboarding3({super.key});
@@ -34,7 +33,7 @@ class SectionOnboarding3State extends State<SectionOnboarding3> {
                   width: 40,
                 ),
                 Text(
-                  "Let\’s start sharing\nwith arround you!",
+                  "Let’s start sharing\nwith arround you!",
                   style: h1TextStyle(
                     weight: FontWeight.w800,
                     color: ColorConstants.slate[900],

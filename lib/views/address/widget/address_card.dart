@@ -7,7 +7,7 @@ import 'package:mobile/widgets/text_styles.dart';
 
 class AddressCard extends StatelessWidget {
   final bool isPrimary;
-  AddressModel data;
+  final AddressModel data;
 
   AddressCard({super.key, required this.isPrimary, required this.data});
 

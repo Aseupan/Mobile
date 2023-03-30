@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/auth/auth_controller.dart';
 import 'package:mobile/routes/app_routes.dart';
-import 'package:mobile/services/api/app_token.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
@@ -24,8 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(AppToken.getToken());
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -132,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               return null;
                             },
                             obscureText: _obscureText,
-                            controller: _controller.loginForm.value['password'],
+                            controller: _controller.loginForm['password'],
                           ),
                           SizedBox(height: 15),
                           ElevatedButton(

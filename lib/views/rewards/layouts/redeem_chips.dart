@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/views/rewards/widgets/redeem_card.dart';
@@ -8,7 +6,7 @@ import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
 class RedeemChips extends StatelessWidget {
-  GlobalController controller = GlobalController.i;
+  final GlobalController controller = GlobalController.i;
   RedeemChips({super.key});
 
   @override

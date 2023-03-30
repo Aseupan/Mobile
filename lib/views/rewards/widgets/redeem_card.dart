@@ -6,8 +6,8 @@ import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
 class RedeemCard extends StatelessWidget {
-  RedeemRewardModel data;
-  RedeemCard({super.key, required this.data});
+  final RedeemRewardModel data;
+  const RedeemCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {

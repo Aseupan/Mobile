@@ -4,10 +4,11 @@ class FadeInLeftFadeOutRight extends StatefulWidget {
   final Widget child;
   final int duration;
 
-  FadeInLeftFadeOutRight({required this.child, required this.duration});
+  const FadeInLeftFadeOutRight(
+      {super.key, required this.child, required this.duration});
 
   @override
-  _FadeInLeftFadeOutRightState createState() => _FadeInLeftFadeOutRightState();
+  State<FadeInLeftFadeOutRight> createState() => _FadeInLeftFadeOutRightState();
 }
 
 class _FadeInLeftFadeOutRightState extends State<FadeInLeftFadeOutRight>

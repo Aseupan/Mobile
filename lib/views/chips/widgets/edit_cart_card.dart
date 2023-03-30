@@ -3,12 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile/models/chips/cart_model.dart';
 import 'package:mobile/services/api/post_api_service.dart';
 import 'package:mobile/utils/color_constants.dart';
-import 'package:mobile/widgets/control_counter.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
 class EditCartCard extends StatelessWidget {
-  CartModel data;
-  EditCartCard({super.key, required this.data});
+  final CartModel data;
+  const EditCartCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {

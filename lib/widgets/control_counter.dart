@@ -3,11 +3,12 @@ import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
 class ControlCounter extends StatelessWidget {
-  String label;
-  int value;
-  void Function(int) onChange;
-  String unit;
-  ControlCounter(
+  final String label;
+  final int value;
+  final void Function(int) onChange;
+  final String unit;
+
+  const ControlCounter(
       {super.key,
       required this.label,
       required this.value,

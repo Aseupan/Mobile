@@ -90,9 +90,7 @@ class SenderAddressCard extends StatelessWidget {
                 thickness: 1,
               ),
               InkWell(
-                onTap: () {
-                  // TODO: ADD ROUTING TO MY ADDRESS
-                },
+                onTap: () {},
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8),
                   child: Row(
