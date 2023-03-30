@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:mobile/models/chips/cart_model.dart';
-import 'package:mobile/models/chips/chips_model.dart';
 
 class ChipsController extends GetxController {
   static ChipsController get i => Get.find();

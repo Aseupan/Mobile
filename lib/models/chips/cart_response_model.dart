@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mobile/models/chips/cart_model.dart';
 import 'package:mobile/models/sources/model_factory.dart';

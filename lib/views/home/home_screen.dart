@@ -31,11 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
       GetApiService.getuserProfile();
       GetApiService.getInformations();
-
-      if (!controller.isAdmin.value) {
-        GetApiService.getAllAddresses();
-        GetApiService.getAllChips();
-      }
+      GetApiService.getAllAddresses();
+      GetApiService.getAllChips();
+      GetApiService.getCampaigns();
     });
   }
 

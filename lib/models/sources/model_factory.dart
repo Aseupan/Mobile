@@ -1,4 +1,5 @@
 import 'package:mobile/models/address/address_model.dart';
+import 'package:mobile/models/campaign/campaign_model.dart';
 import 'package:mobile/models/chips/cart_response_model.dart';
 import 'package:mobile/models/chips/chips_model.dart';
 import 'package:mobile/models/home/information_card.dart';
@@ -27,6 +28,8 @@ abstract class ModelFactory {
       return CartResponseModel.fromJson(json);
     } else if (strType == (CompanyProfileModel).toString()) {
       return CompanyProfileModel.fromJson(json);
+    } else if (strType == (CampaignModel).toString()) {
+      return CampaignModel.fromJson(json);
     } else {
       throw UnimplementedError('`$type` factory unimplemented.');
     }
