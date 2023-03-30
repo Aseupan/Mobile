@@ -1,9 +1,6 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
 import 'package:mobile/controller/global/company_controller.dart';
 import 'package:mobile/controller/global/global_controller.dart';
@@ -358,6 +355,30 @@ class PostApiService {
       } else {
         ApiUtils.showAlert(e.message ?? e.error.toString());
       }
+    }
+  }
+
+  static void createCampaign(FormData data) async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      var request =
+          await api.post("$BASE_URL/api/campaign/company/create", data: data);
+
+      ApiUtils.showAlert(request.data['message'], isSuccess: true);
+      Get.back();
+      Get.back();
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+      Get.back();
     }
   }
 }

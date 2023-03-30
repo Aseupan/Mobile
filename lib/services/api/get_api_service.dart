@@ -17,7 +17,6 @@ import 'package:mobile/services/api/base_url.dart';
 class GetApiService {
   static void getInformations() async {
     final api = Dio();
-    // api.options.headers = ApiUtils.header();
 
     try {
       Response request = await api.get(
