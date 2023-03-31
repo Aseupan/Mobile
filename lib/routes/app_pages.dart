@@ -24,6 +24,7 @@ import 'package:mobile/views/campaign/pickup/pickup_detail_screen.dart';
 import 'package:mobile/views/chips/chips_purchase_screen.dart';
 import 'package:mobile/views/chips/chips_store_screen.dart';
 import 'package:mobile/views/chips/mycart_screen.dart';
+import 'package:mobile/views/history/history_screen.dart';
 import 'package:mobile/views/home/home_screen.dart';
 import 'package:mobile/views/launch/splash_screen.dart';
 import 'package:mobile/routes/app_routes.dart';
@@ -38,6 +39,10 @@ List<GetPage<dynamic>> appRouter() {
     GetPage(
       name: RoutePage.splash,
       page: () => SplashScreen(),
+    ),
+    GetPage(
+      name: RoutePage.history,
+      page: () => HistoryScreen(),
     ),
     GetPage(
       name: RoutePage.onBoarding,

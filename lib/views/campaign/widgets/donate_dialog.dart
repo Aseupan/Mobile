@@ -40,7 +40,7 @@ class DonateDialog extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Get.back();
-              Get.toNamed(RoutePage.foodDetail(1));
+              Get.toNamed(RoutePage.foodDetail(num.parse(id)));
             },
             child: Container(
               decoration: BoxDecoration(

@@ -251,4 +251,27 @@ class GetApiService {
       }
     }
   }
+
+  static void getOngoingHistory() async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      var request = await api.get("$BASE_URL/api/history/ongoing");
+
+      GlobalController controller = GlobalController.i;
+      controller.ongoingHistroy.value = request.data['data']
+          .map((e) => "Donate for ${e['Campaign']['name']}")
+          .toList();
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+    }
+  }
 }

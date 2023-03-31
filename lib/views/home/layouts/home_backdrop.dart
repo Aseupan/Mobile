@@ -116,13 +116,16 @@ class BackdropHome extends StatelessWidget {
                           SizedBox(height: 10),
                           ClipRRect(
                             borderRadius: BorderRadius.circular(5),
-                            child: LinearProgressIndicator(
-                              color: ColorConstants.secondary[600],
-                              backgroundColor: ColorConstants.slate[800],
-                              minHeight: 5,
-                              value: (controller.profile.value.point / 500) > 1
-                                  ? 1
-                                  : controller.profile.value.point / 500,
+                            child: Obx(
+                              () => LinearProgressIndicator(
+                                color: ColorConstants.secondary[600],
+                                backgroundColor: ColorConstants.slate[800],
+                                minHeight: 5,
+                                value:
+                                    (controller.profile.value.point / 500) > 1
+                                        ? 1
+                                        : controller.profile.value.point / 500,
+                              ),
                             ),
                           ),
                         ],

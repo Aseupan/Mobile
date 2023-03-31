@@ -5,8 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile/controller/campaign/campaign_controller.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/models/campaign/campaign_model.dart';
-import 'package:mobile/models/chips/cart_model.dart';
-import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/api/get_api_service.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/utils/date_formatter.dart';

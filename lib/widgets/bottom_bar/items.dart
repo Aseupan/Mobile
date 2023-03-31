@@ -59,7 +59,7 @@ class BottomBarItem extends StatelessWidget {
         Get.toNamed(RoutePage.reward);
         break;
       case 3:
-        // Get.toNamed(RoutePage.);
+        Get.toNamed(RoutePage.history);
         break;
       case 4:
         Get.toNamed(RoutePage.profile);

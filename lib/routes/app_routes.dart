@@ -11,6 +11,8 @@ class RoutePage {
     return "/address/edit/$id";
   }
 
+  static const String history = "/history";
+
   static const String reward = "/reward";
   static const String profile = "/profile";
   static const String editProfile = "/profile/edit";

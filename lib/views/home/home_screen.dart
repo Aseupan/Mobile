@@ -35,11 +35,16 @@ class _HomeScreenState extends State<HomeScreen> {
       GetApiService.getAllAddresses();
       GetApiService.getAllChips();
       GetApiService.getCampaigns();
+
+      if (controller.isAdmin.isFalse) {
+        GetApiService.getOngoingHistory();
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    GetApiService.getOngoingHistory();
     return Scaffold(
       body: Stack(
         children: [
@@ -97,26 +102,35 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      CarouselSlider(
-                        items: [1, 2, 3, 4, 5].map((i) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return Container(
-                                  width: 100.w,
-                                  margin: EdgeInsets.symmetric(horizontal: 5.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                      Obx(
+                        () => CarouselSlider(
+                          items: controller.campaigns.map((i) {
+                            return Builder(
+                              builder: (BuildContext context) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    Get.toNamed(RoutePage.campaignDetail(i.id));
+                                  },
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(7),
+                                    child: Image.network(
+                                      i.thumbnail_1,
+                                      width: 75.w,
+                                      height: 150,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                  child: Placeholder());
-                            },
-                          );
-                        }).toList(),
-                        options: CarouselOptions(
-                          autoPlay: true,
-                          enableInfiniteScroll: false,
-                          padEnds: false,
-                          height: 130,
-                          viewportFraction: 0.9,
+                                );
+                              },
+                            );
+                          }).toList(),
+                          options: CarouselOptions(
+                            autoPlay: true,
+                            enableInfiniteScroll: false,
+                            padEnds: false,
+                            height: 130,
+                            viewportFraction: 0.9,
+                          ),
                         ),
                       ),
                       SizedBox(height: 20),

@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/services/api/get_api_service.dart';
 import 'package:mobile/utils/color_constants.dart';
@@ -64,19 +65,24 @@ class _RewardScreenState extends State<RewardScreen> {
                         ),
                       ),
                       SizedBox(height: 11),
-                      CarouselSlider(
-                        items: [1, 2, 3, 4, 5].map((i) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return CampaignCard();
-                            },
-                          );
-                        }).toList(),
-                        options: CarouselOptions(
-                          autoPlay: true,
-                          enableInfiniteScroll: true,
-                          viewportFraction: 0.9,
-                          height: 190,
+                      Obx(
+                        () => CarouselSlider(
+                          items: controller.campaigns.map((i) {
+                            return Builder(
+                              builder: (BuildContext context) {
+                                return CampaignCard(
+                                  url: i.thumbnail_1,
+                                  id: i.id,
+                                );
+                              },
+                            );
+                          }).toList(),
+                          options: CarouselOptions(
+                            autoPlay: true,
+                            enableInfiniteScroll: true,
+                            viewportFraction: 0.9,
+                            height: 190,
+                          ),
                         ),
                       ),
                       Padding(

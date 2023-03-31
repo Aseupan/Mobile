@@ -440,6 +440,7 @@ class PostApiService {
       Map<String, dynamic> confirmData) async {
     final api = Dio();
     api.options.headers = ApiUtils.header();
+    print(campaignId);
 
     try {
       var request = await api.post(
@@ -449,6 +450,7 @@ class PostApiService {
       // ApiUtils.showAlert(request.data['message'], isSuccess: true);
       // Get.back();
       // Get.toNamed(RoutePage.donationSuccess);
+
       confirmDonation(confirmData, campaignId);
     } on DioError catch (e) {
       if (e.response != null) {

@@ -21,4 +21,6 @@ class GlobalController extends GetxController {
   RxBool isAdmin = false.obs;
 
   RxList<CampaignModel> campaigns = <CampaignModel>[].obs;
+
+  RxList<dynamic> ongoingHistroy = <dynamic>[].obs;
 }
