@@ -90,8 +90,8 @@ class _RegisterBigpartyScreenState extends State<RegisterBigpartyScreen> {
                               ),
                               fillColor: Colors.white,
                             ),
-                            controller:
-                                _controller.registerBigpartyForm['name'],
+                            controller: _controller
+                                .registerBigpartyForm['company_name'],
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter your name';
@@ -129,8 +129,8 @@ class _RegisterBigpartyScreenState extends State<RegisterBigpartyScreen> {
                               ),
                             ),
                             keyboardType: TextInputType.emailAddress,
-                            controller:
-                                _controller.registerBigpartyForm['email'],
+                            controller: _controller
+                                .registerBigpartyForm['company_email'],
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter your Email';
@@ -167,19 +167,17 @@ class _RegisterBigpartyScreenState extends State<RegisterBigpartyScreen> {
                               ),
                             ),
                             keyboardType: TextInputType.emailAddress,
-                            controller:
-                                _controller.registerBigpartyForm['address'],
+                            controller: _controller
+                                .registerBigpartyForm['company_address'],
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Please enter your Email';
-                              }
-                              if (!EmailValidator.validate(value)) {
-                                return "Email is not valid";
+                                return 'Please enter your Address';
                               }
 
                               return null;
                             },
                           ),
+                          SizedBox(height: 15),
                           Text(
                             "Password",
                             style: bodyTextStyle(
@@ -267,7 +265,8 @@ class _RegisterBigpartyScreenState extends State<RegisterBigpartyScreen> {
                                 },
                               ),
                             ),
-                            controller: confirmPasswordController,
+                            controller: _controller
+                                .registerBigpartyForm['confirm_password'],
                             obscureText: _obscureConfirmPassword,
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -291,7 +290,7 @@ class _RegisterBigpartyScreenState extends State<RegisterBigpartyScreen> {
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                _controller.register();
+                                _controller.registerCompany();
                               }
                             },
                             child: Text(

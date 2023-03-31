@@ -53,7 +53,7 @@ class PostApiService {
 
     try {
       Response request =
-          await api.post("$BASE_URL/api/register", data: jsonEncode(data));
+          await api.post("$BASE_URL/api/user-register", data: jsonEncode(data));
 
       final loginData = {
         'email': data['email'],
@@ -67,11 +67,35 @@ class PostApiService {
       if (e.response != null) {
         final response = e.response!;
         ApiUtils.showAlert(response.data['message']);
-        throw Exception("Login failed: ${e.response!.statusCode}");
       } else {
         // Handle network error
         if (e.message != null) ApiUtils.showAlert(e.message!);
-        throw Exception("Network error: ${e.message}");
+      }
+    }
+  }
+
+  static void registerCompany(Map<String, String> data) async {
+    final api = Dio();
+
+    try {
+      Response request = await api.post("$BASE_URL/api/company-register",
+          data: jsonEncode(data));
+
+      final loginData = {
+        'email': data['company_email'],
+        'password': data['password'],
+      };
+
+      ApiUtils.showAlert('Create Account Successed', isSuccess: true);
+
+      login(loginData);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        ApiUtils.showAlert(response.data['message']);
+      } else {
+        // Handle network error
+        if (e.message != null) ApiUtils.showAlert(e.message!);
       }
     }
   }

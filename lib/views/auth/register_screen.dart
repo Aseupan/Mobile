@@ -30,7 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           decoration: BoxDecoration(
             gradient: ColorConstants.gradient['blue2'],
           ),
-          constraints: BoxConstraints(minHeight: 110.h),
+          constraints: BoxConstraints(minHeight: 105.h),
           width: 100.w,
           child: Stack(
             children: [
@@ -214,7 +214,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 },
                               ),
                             ),
-                            controller: confirmPasswordController,
+                            controller:
+                                _controller.registerForm['confirm_password'],
                             obscureText: _obscureConfirmPassword,
                             validator: (value) {
                               if (value!.isEmpty) {

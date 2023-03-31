@@ -1,4 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mobile/routes/app_routes.dart';
+import 'package:mobile/services/api/app_token.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,9 +22,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 1500), () {
-      setState(() {
-        width *= 1.2;
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      Timer(Duration(seconds: 3), () {
+        Get.offAllNamed(
+            AppToken.checkToken() ? RoutePage.home : RoutePage.onBoarding);
       });
     });
   }
@@ -31,21 +37,12 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Container(
           decoration: BoxDecoration(gradient: ColorConstants.gradient['blue1']),
           child: SizedBox(
-              width: 100.w,
-              height: 100.h,
-              child: Column(
-                children: [
-                  Center(child: SvgPicture.asset('assets/images/logo.svg')),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        state = true;
-                      });
-                    },
-                    child: Text('asdasd'),
-                  )
-                ],
-              )),
+            width: 100.w,
+            height: 100.h,
+            child: Center(
+              child: SvgPicture.asset('assets/logo/logo.svg'),
+            ),
+          ),
         ),
       ),
     );

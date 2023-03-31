@@ -16,6 +16,7 @@ import 'package:mobile/models/profile/profile_model.dart';
 import 'package:mobile/models/response.dart';
 import 'package:mobile/models/reward/redeem_reward_model.dart';
 import 'package:mobile/services/api/api_utils.dart';
+import 'package:mobile/services/api/app_token.dart';
 import 'package:mobile/services/api/base_url.dart';
 
 class GetApiService {
