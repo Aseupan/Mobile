@@ -100,6 +100,27 @@ class _ChipsPurchaseScreenState extends State<ChipsPurchaseScreen> {
                   SizedBox(height: 15),
                   InkWell(
                     onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Dialog(
+                              child: SizedBox(
+                                height: 200,
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      CircularProgressIndicator(),
+                                      SizedBox(height: 15),
+                                      Text('Purchasing Chips ...')
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          });
                       PostApiService.purchaseChips(1);
                     },
                     child: Container(
@@ -149,6 +170,27 @@ class _ChipsPurchaseScreenState extends State<ChipsPurchaseScreen> {
                   SizedBox(height: 15),
                   InkWell(
                     onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Dialog(
+                              child: SizedBox(
+                                height: 200,
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      CircularProgressIndicator(),
+                                      SizedBox(height: 15),
+                                      Text('Purchasing Chips ...')
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          });
                       PostApiService.purchaseChips(2);
                     },
                     child: Container(

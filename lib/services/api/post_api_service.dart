@@ -336,14 +336,16 @@ class PostApiService {
     api.options.headers = ApiUtils.header();
 
     try {
-      await api.post(
-        "$BASE_URL/api/credit-store/remove-amount/$id",
+      var request = await api.post(
+        "$BASE_URL/api/credit-store/payment",
         data: jsonEncode(
           {
             "payment_method": id,
           },
         ),
       );
+      ApiUtils.showAlert(request.data['message'], isSuccess: true);
+      Get.back();
 
       GetApiService.getCart();
     } on DioError catch (e) {
@@ -369,6 +371,85 @@ class PostApiService {
       ApiUtils.showAlert(request.data['message'], isSuccess: true);
       Get.back();
       Get.back();
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+      Get.back();
+    }
+  }
+
+  static void createDonationCatering(
+      Map<String, dynamic> data, String campaignId, int cateringID) async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      var request = await api.post(
+          "$BASE_URL/api/campaign/user/donate/catering/$campaignId/$cateringID",
+          data: jsonEncode(data));
+
+      ApiUtils.showAlert(request.data['message'], isSuccess: true);
+      Get.back();
+      Get.toNamed(RoutePage.donationSuccess);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+      Get.back();
+    }
+  }
+
+  static void confirmDonation(
+      Map<String, dynamic> data, String campaignId) async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      var request = await api.post(
+          "$BASE_URL/api/campaign/user/donate/$campaignId/confirm",
+          data: jsonEncode(data));
+
+      ApiUtils.showAlert(request.data['message'], isSuccess: true);
+      Get.back();
+      Get.toNamed(RoutePage.donationSuccess);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+      Get.back();
+    }
+  }
+
+  static void createDonation(Map<String, dynamic> data, String campaignId,
+      Map<String, dynamic> confirmData) async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      var request = await api.post(
+          "$BASE_URL/api/campaign/user/donate/personal/$campaignId",
+          data: jsonEncode(data));
+
+      // ApiUtils.showAlert(request.data['message'], isSuccess: true);
+      // Get.back();
+      // Get.toNamed(RoutePage.donationSuccess);
+      confirmDonation(confirmData, campaignId);
     } on DioError catch (e) {
       if (e.response != null) {
         final response = e.response!;

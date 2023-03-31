@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/models/catering/catering_model.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
 class CateringCard extends StatefulWidget {
-  final int id;
   final int catering;
+  CateringModel data;
   void Function(int e) onChanged;
 
   CateringCard(
       {super.key,
-      required this.id,
       required this.catering,
-      required this.onChanged});
+      required this.onChanged,
+      required this.data});
 
   @override
   State<CateringCard> createState() => _CateringCardState();
@@ -23,7 +24,7 @@ class _CateringCardState extends State<CateringCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        widget.onChanged(widget.id);
+        widget.onChanged(widget.data.id);
       },
       child: Container(
         padding: EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 15),
@@ -34,10 +35,10 @@ class _CateringCardState extends State<CateringCard> {
         child: Row(
           children: [
             Radio(
-              value: widget.id,
+              value: widget.data.id,
               groupValue: widget.catering,
               onChanged: (e) {
-                widget.onChanged(widget.id);
+                widget.onChanged(widget.data.id);
               },
               visualDensity: VisualDensity.compact,
             ),
@@ -60,7 +61,7 @@ class _CateringCardState extends State<CateringCard> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'Jl. Bunga Coklat No. 35\nLowokwaru, Kota Malang, Jawa Timur, 65115',
+                    widget.data.address,
                     style: body6TextStyle(
                       weight: FontWeight.w600,
                     ),

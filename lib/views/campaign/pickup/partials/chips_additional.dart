@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/campaign/campaign_controller.dart';
+import 'package:mobile/controller/campaign/masak_controller.dart';
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
@@ -15,9 +17,12 @@ class ChipsAdditional extends StatefulWidget {
 class _ChipsAdditionalState extends State<ChipsAdditional> {
   final id = Get.parameters['campaignId']!.substring(1);
   final _controller = CampaignController.i.pickupState;
+  final GlobalController globalController = GlobalController.i;
+  MasakController masakController = MasakController.i;
 
   @override
   Widget build(BuildContext context) {
+    print(id);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -43,7 +48,7 @@ class _ChipsAdditionalState extends State<ChipsAdditional> {
                         width: 12,
                       ),
                     ),
-                    TextSpan(text: " 500 )")
+                    TextSpan(text: " ${globalController.profile.value.point} )")
                   ]),
             ),
           ],
@@ -65,9 +70,19 @@ class _ChipsAdditionalState extends State<ChipsAdditional> {
                     children: [
                       Obx(
                         () => Checkbox(
-                          value: _controller[id]?.isSpecial.value ?? false,
+                          value: masakController.data['additional_chips']
+                              .contains(1),
                           onChanged: (e) {
-                            _controller[id]?.isSpecial.value = e!;
+                            if (e!) {
+                              setState(() {
+                                masakController.data['additional_chips'].add(1);
+                              });
+                            } else {
+                              setState(() {
+                                masakController.data['additional_chips']
+                                    .remove(1);
+                              });
+                            }
                           },
                         ),
                       ),
@@ -124,9 +139,19 @@ class _ChipsAdditionalState extends State<ChipsAdditional> {
                     children: [
                       Obx(
                         () => Checkbox(
-                          value: _controller[id]?.isAdditional.value ?? false,
+                          value: masakController.data['additional_chips']
+                              .contains(2),
                           onChanged: (e) {
-                            _controller[id]?.isAdditional.value = e!;
+                            if (e!) {
+                              setState(() {
+                                masakController.data['additional_chips'].add(2);
+                              });
+                            } else {
+                              setState(() {
+                                masakController.data['additional_chips']
+                                    .remove(2);
+                              });
+                            }
                           },
                         ),
                       ),
@@ -183,9 +208,19 @@ class _ChipsAdditionalState extends State<ChipsAdditional> {
                     children: [
                       Obx(
                         () => Checkbox(
-                          value: _controller[id]?.isGift.value ?? false,
+                          value: masakController.data['additional_chips']
+                              .contains(3),
                           onChanged: (e) {
-                            _controller[id]?.isGift.value = e!;
+                            if (e!) {
+                              setState(() {
+                                masakController.data['additional_chips'].add(3);
+                              });
+                            } else {
+                              setState(() {
+                                masakController.data['additional_chips']
+                                    .remove(3);
+                              });
+                            }
                           },
                         ),
                       ),

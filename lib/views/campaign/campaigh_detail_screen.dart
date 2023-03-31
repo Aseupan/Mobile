@@ -49,7 +49,6 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(data.end_date);
     return Scaffold(
       backgroundColor: ColorConstants.slate[25],
       appBar: CustomAppBar("Campaign Details"),

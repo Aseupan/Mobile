@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/campaign/campaign_controller.dart';
+import 'package:mobile/controller/campaign/catering_controller.dart';
+import 'package:mobile/routes/app_routes.dart';
+import 'package:mobile/services/api/get_api_service.dart';
 import 'package:mobile/widgets/custom_appbar.dart';
 import 'package:mobile/widgets/custom_textfield.dart';
 import 'package:mobile/widgets/text_styles.dart';
@@ -18,6 +21,7 @@ class _FormCateringScreenState extends State<FormCateringScreen> {
   String id = Get.parameters['id']!;
   CampaignController controller = CampaignController.i;
   late Map<String, dynamic>? data = controller.cateringForm[id];
+  CateringController cateringController = CateringController.i;
 
   @override
   void initState() {
@@ -26,11 +30,13 @@ class _FormCateringScreenState extends State<FormCateringScreen> {
       (_) {
         controller.cateringForm[id] =
             copyMap<dynamic>(controller.baseCateringForm);
+
+        GetApiService.getAllCetering();
       },
     );
   }
 
-  int cateringId = 1;
+  int cateringId = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -107,26 +113,33 @@ class _FormCateringScreenState extends State<FormCateringScreen> {
                   weight: FontWeight.bold,
                 ),
               ),
-              Wrap(
-                runSpacing: 20,
-                children: [1, 2, 3]
-                    .map(
-                      (e) => CateringCard(
-                        id: e,
-                        catering: cateringId,
-                        onChanged: <int>(e) {
-                          setState(() {
-                            cateringId = e!;
-                          });
-                        },
-                      ),
-                    )
-                    .toList(),
+              Obx(
+                () => Wrap(
+                  runSpacing: 20,
+                  children: cateringController.caterings
+                      .map(
+                        (e) => CateringCard(
+                          data: e,
+                          catering: cateringController.cateringId.value,
+                          onChanged: <int>(e) {
+                            cateringController.cateringId.value = e!;
+                          },
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('Continue To Shiping'),
+              Obx(
+                () => ElevatedButton(
+                  onPressed: cateringController.cateringId.value != -999
+                      ? () {
+                          Get.toNamed(RoutePage.cateringPickup,
+                              parameters: {'id': id});
+                        }
+                      : null,
+                  child: Text('Continue To Shiping'),
+                ),
               ),
               SizedBox(height: 10),
             ],

@@ -11,7 +11,7 @@ class DonateDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String id = Get.parameters['campaignId']!.substring(1);
+    String id = Get.parameters['campaignId']?.substring(1) ?? "0";
     return Container(
       decoration: BoxDecoration(
         color: ColorConstants.slate[25],

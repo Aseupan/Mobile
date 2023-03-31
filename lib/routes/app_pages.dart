@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/controller/campaign/catering_binding.dart';
+import 'package:mobile/controller/campaign/masak_controller.dart';
 import 'package:mobile/controller/home/home_binding.dart';
 import 'package:mobile/controller/profile/edit_profile_binding.dart';
 import 'package:mobile/views/address/change_address_screen.dart';
@@ -13,8 +15,10 @@ import 'package:mobile/views/campaign/campaigh_detail_screen.dart';
 import 'package:mobile/views/campaign/campaign_binding.dart';
 import 'package:mobile/views/campaign/campaign_list_screen.dart';
 import 'package:mobile/views/campaign/catering/campaign_procedure.dart';
+import 'package:mobile/views/campaign/catering/catering_pickup.dart';
 import 'package:mobile/views/campaign/catering/form_catering.dart';
 import 'package:mobile/views/campaign/create_campaign_screen.dart';
+import 'package:mobile/views/campaign/donate_success_screen.dart';
 import 'package:mobile/views/campaign/food_campaign_screen.dart';
 import 'package:mobile/views/campaign/pickup/pickup_detail_screen.dart';
 import 'package:mobile/views/chips/chips_purchase_screen.dart';
@@ -80,12 +84,30 @@ List<GetPage<dynamic>> appRouter() {
     GetPage(
       name: '/campaign/:campaignId/pickup',
       page: () => PickupDetailScreen(),
-      bindings: [CampaignBinding()],
+      bindings: [
+        CampaignBinding(),
+        MasakBinding(),
+      ],
+    ),
+    GetPage(
+      name: RoutePage.donationSuccess,
+      page: () => DonationSucessScreen(),
     ),
     GetPage(
       name: RoutePage.formCatering,
       page: () => FormCateringScreen(),
-      binding: CampaignBinding(),
+      bindings: [
+        CampaignBinding(),
+        CateringBinding(),
+      ],
+    ),
+    GetPage(
+      name: RoutePage.cateringPickup,
+      page: () => CateringPickupScreen(),
+      bindings: [
+        CampaignBinding(),
+        CateringBinding(),
+      ],
     ),
     GetPage(
       name: RoutePage.registerBigparty,

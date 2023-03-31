@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/widgets/text_styles.dart';
 
 class MoreChips extends StatelessWidget {
@@ -7,7 +9,9 @@ class MoreChips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(RoutePage.chips);
+      },
       child: Container(
         height: 55,
         decoration: BoxDecoration(
