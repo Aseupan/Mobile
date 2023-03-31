@@ -12,7 +12,8 @@ import 'package:mobile/views/auth/register_screen.dart';
 import 'package:mobile/views/campaign/campaigh_detail_screen.dart';
 import 'package:mobile/views/campaign/campaign_binding.dart';
 import 'package:mobile/views/campaign/campaign_list_screen.dart';
-import 'package:mobile/views/campaign/campaign_procedure.dart';
+import 'package:mobile/views/campaign/catering/campaign_procedure.dart';
+import 'package:mobile/views/campaign/catering/form_catering.dart';
 import 'package:mobile/views/campaign/create_campaign_screen.dart';
 import 'package:mobile/views/campaign/food_campaign_screen.dart';
 import 'package:mobile/views/campaign/pickup/pickup_detail_screen.dart';
@@ -83,7 +84,7 @@ List<GetPage<dynamic>> appRouter() {
     ),
     GetPage(
       name: RoutePage.formCatering,
-      page: () => Scaffold(),
+      page: () => FormCateringScreen(),
       binding: CampaignBinding(),
     ),
     GetPage(

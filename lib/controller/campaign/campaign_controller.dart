@@ -37,8 +37,26 @@ class CampaignController extends GetxController {
     "thumbnail5": "",
   }.obs;
 
+  var baseCateringForm = <String, dynamic>{
+    "name": TextEditingController(),
+    "phone": TextEditingController(),
+    "address": TextEditingController(),
+    "addressDetail": TextEditingController(),
+    "issave": false,
+  };
+
+  RxMap<String, dynamic> cateringForm = <String, dynamic>{
+    "name": TextEditingController(),
+    "phone": TextEditingController(),
+    "address": TextEditingController(),
+    "addressDetail": TextEditingController(),
+    "issave": false,
+  }.obs;
+
   RxMap<String, CampaignModel> campaignDetail = <String, CampaignModel>{}.obs;
   RxMap<String, List<String>> thumbnailById = <String, List<String>>{}.obs;
+  // RxMap<String, Map<String, dynamic>> cateringForm =
+  //     <String, Map<String, dynamic>>{}.obs;
 
   void createCampaign(BuildContext context) async {
     FormData formData = FormData.fromMap({

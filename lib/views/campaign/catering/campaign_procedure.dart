@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/widgets/custom_appbar.dart';
 import 'package:sizer/sizer.dart';
 
@@ -8,7 +9,7 @@ class CampaignProcedureScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var id = Get.parameters['id']!;
+    final id = Get.parameters['id']!;
     return Scaffold(
       appBar: CustomAppBar("Sharing Procedure"),
       body: SingleChildScrollView(
@@ -83,7 +84,12 @@ class CampaignProcedureScreen extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       fixedSize: Size(100.w, 40),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(
+                        RoutePage.formCatering,
+                        parameters: {'id': id},
+                      );
+                    },
                     child: Text('I am Already Call the Catering'),
                   )
                 ],
