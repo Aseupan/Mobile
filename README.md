@@ -1,4 +1,4 @@
-# mobile
+# Aseupan Mobile Application
 
 A new Flutter project.
 
@@ -6,11 +6,29 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+This project is made by FLutter Framework that can be run in multiple
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clone this repo `git clone`
+2. `flutter run` (for running application in debug mode)
+3. `flutter build` (for build application)
+4. Enjoy the application
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Requirements
+
+Before run the application, make sure completes this requirements
+
+1. Dart SDK (minimum version is 2.0)
+2. Flutter SDK (minimum version is 3.0)
+3. Android SDK (if you want to run in android)
+
+## About Application
+
+Welcome to our food donation app! This app aims to facilitate the donation of food to people in need through various campaigns. Our users can choose to donate either homemade food or catering services to support those who are less fortunate.
+
+In addition, we also have a feature for users who want to become campaign partners. As a partner, you can create campaigns and spread the word about the app to encourage more people to donate food.
+
+To start using the app, simply download and install it on your device. After that, you can browse through the available campaigns or create your own. Once you find a campaign that you want to support, you can choose the type of food that you want to donate and complete the donation process.
+
+We take food safety very seriously and have strict guidelines to ensure that all donated food is safe and suitable for consumption. Therefore, please make sure to follow the guidelines and only donate food that meets our standards.
+
+Thank you for using our app and for your contributions to helping those in need!
