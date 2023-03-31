@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       SizedBox(height: 20),
                       Center(
-                        child: SvgPicture.asset("assets/images/logo.svg"),
+                        child: SvgPicture.asset("assets/logo/logo-no-text.svg"),
                       ),
                       Text(
                         "Glad to see\nyou come back!",
