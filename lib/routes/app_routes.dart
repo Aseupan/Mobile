@@ -29,6 +29,8 @@ class RoutePage {
   }
 
   static const String createCampaign = "/campaign/create";
+  static const String campaignProcedure = "/campaign/catering/procedure";
+  static const String formCatering = "/campaign/catering/form";
 
   static String foodDetail(num campaignId) {
     return '/campaign/:$campaignId/food';

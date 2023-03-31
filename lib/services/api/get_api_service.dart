@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:mobile/controller/campaign/campaign_controller.dart';
 import 'package:mobile/controller/chips/chips_controller.dart';
 import 'package:mobile/controller/global/company_controller.dart';
 import 'package:mobile/controller/global/global_controller.dart';
@@ -181,6 +182,39 @@ class GetApiService {
 
       GlobalController controller = GlobalController.i;
       controller.campaigns.value = response.data!;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response = e.response!;
+        if (!ApiUtils.logout(response)) {
+          ApiUtils.showAlert(response.data['error'] ?? e.toString());
+        }
+      } else {
+        ApiUtils.showAlert(e.message ?? e.error.toString());
+      }
+    }
+  }
+
+  static void getCampaignById(String id) async {
+    final api = Dio();
+    api.options.headers = ApiUtils.header();
+
+    try {
+      var request = await api.get("$BASE_URL/api/campaign/user/detail/$id");
+
+      ApiResponse<CampaignModel> response = ApiResponse.fromJson(request.data);
+
+      CampaignModel data = response.data!;
+      CampaignController controller = CampaignController.i;
+      controller.campaignDetail[id] = response.data!;
+
+      List<String> thumbnails = [];
+
+      if (data.thumbnail_1 != "") thumbnails.add(data.thumbnail_1);
+      if (data.thumbnail_2 != "") thumbnails.add(data.thumbnail_2);
+      if (data.thumbnail_3 != "") thumbnails.add(data.thumbnail_3);
+      if (data.thumbnail_4 != "") thumbnails.add(data.thumbnail_4);
+      if (data.thumbnail_5 != "") thumbnails.add(data.thumbnail_5);
+      controller.thumbnailById[id] = thumbnails;
     } on DioError catch (e) {
       if (e.response != null) {
         final response = e.response!;

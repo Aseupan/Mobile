@@ -77,26 +77,17 @@ class _CampaignListScreenState extends State<CampaignListScreen> {
               ),
               SizedBox(height: 16),
               // CardCampaign(status: 2)
-              Wrap(
-                direction: Axis.horizontal,
-                runSpacing: 20,
-                children: [
-                  ...[
-                    {'status': 1, 'needs': 100, 'current': 65},
-                    {'status': 2, 'needs': 100, 'current': 65},
-                    {'status': 0, 'needs': 70, 'current': 65},
-                    {'status': 0, 'needs': 90, 'current': 65},
-                    {'status': 0, 'needs': 100, 'current': 20},
-                    {'status': 0, 'needs': 100, 'current': 65},
-                  ].map(
-                    (e) => CardCampaign(
-                      status: e['status']!,
-                      current: e['current']!,
-                      needs: e['needs']!,
-                    ),
-                  )
-                ],
-              )
+              Obx(() => Wrap(
+                    direction: Axis.horizontal,
+                    runSpacing: 20,
+                    children: [
+                      ...controller.campaigns.map(
+                        (e) => CardCampaign(
+                          data: e,
+                        ),
+                      )
+                    ],
+                  )),
             ],
           ),
         ),

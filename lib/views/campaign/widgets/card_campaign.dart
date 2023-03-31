@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/models/campaign/campaign_model.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
+import 'package:mobile/utils/date_formatter.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
 class CardCampaign extends StatefulWidget {
-  final int status;
-  final int needs;
-  final int current;
-  /*
-    0 = gaada status
-    1 = urgent needed
-    2 = almost done
-  */
+  final CampaignModel data;
   const CardCampaign({
     super.key,
-    required this.status,
-    required this.current,
-    required this.needs,
+    required this.data,
   });
 
   @override
@@ -26,63 +19,82 @@ class CardCampaign extends StatefulWidget {
 }
 
 class _CardCampaignState extends State<CardCampaign> {
-  Widget Status() {
-    int status = widget.status;
-    switch (status) {
-      case 0:
-        return SizedBox(
-          width: 0,
-          height: 0,
-        );
-      default:
-        return Positioned(
-          top: 0,
-          left: 0,
-          child: Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(7),
-                    topLeft: Radius.circular(5),
-                  ),
-                  color: ColorConstants.secondary[500],
-                ),
-                width: status == 1 ? 115 : 102,
-                height: 30,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(7),
-                  ),
-                  color: ColorConstants.error,
-                ),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 4,
-                ),
-                child: Text(
-                  status == 1 ? 'URGENT NEEDED' : 'ALMOST DONE',
-                  style: body6TextStyle(
-                    weight: FontWeight.bold,
-                    color: ColorConstants.slate[25],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-    }
+  List<String> thumbnails = <String>[];
 
-    // return Text('widget.status');
+  Widget Status() {
+    double percentage = widget.data.progress / widget.data.target;
+    int status = widget.data.urgent;
+    if (status == 1) {
+      return Column(
+        children: [
+          SizedBox(height: 7),
+          Container(
+            decoration: BoxDecoration(
+              color: ColorConstants.error,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            padding: EdgeInsets.symmetric(
+              vertical: 5,
+              horizontal: 12,
+            ),
+            child: Text(
+              'URGENTLY NEEDED!',
+              style: TextStyle(
+                fontSize: 10,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          )
+        ],
+      );
+    } else if (percentage > 0.8) {
+      return Column(
+        children: [
+          SizedBox(height: 7),
+          Container(
+            decoration: BoxDecoration(
+              color: ColorConstants.error,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            padding: EdgeInsets.symmetric(
+              vertical: 5,
+              horizontal: 12,
+            ),
+            child: Text(
+              'ALMOST DONE!',
+              style: TextStyle(
+                fontSize: 10,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          )
+        ],
+      );
+    } else {
+      return SizedBox(
+        width: 0,
+        height: 0,
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.data.thumbnail_1 != "") thumbnails.add(widget.data.thumbnail_1);
+    if (widget.data.thumbnail_2 != "") thumbnails.add(widget.data.thumbnail_2);
+    if (widget.data.thumbnail_3 != "") thumbnails.add(widget.data.thumbnail_3);
+    if (widget.data.thumbnail_4 != "") thumbnails.add(widget.data.thumbnail_4);
+    if (widget.data.thumbnail_5 != "") thumbnails.add(widget.data.thumbnail_5);
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(RoutePage.campaignDetail(1));
+        Get.toNamed(RoutePage.campaignDetail(widget.data.id));
       },
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(7)),
@@ -99,8 +111,8 @@ class _CardCampaignState extends State<CardCampaign> {
                   bottomLeft: Radius.circular(7),
                   bottomRight: Radius.circular(7),
                 ),
-                child: Image(
-                  image: AssetImage('assets/images/dummy_campaign.jpg'),
+                child: Image.network(
+                  thumbnails[0],
                   width: 100.w,
                   height: 130,
                   fit: BoxFit.cover,
@@ -118,19 +130,19 @@ class _CardCampaignState extends State<CardCampaign> {
                       borderRadius: BorderRadius.all(Radius.circular(12)),
                       child: LinearProgressIndicator(
                         minHeight: 5,
-                        value: widget.current / widget.needs,
+                        value: widget.data.progress / widget.data.target,
                         color: ColorConstants.primary[600],
                         backgroundColor: ColorConstants.slate[200],
                       ),
                     ),
                     SizedBox(height: 5),
                     Text(
-                      "${widget.current} boxes food of ${widget.needs} boxes",
+                      "${widget.data.progress} boxes food of ${widget.data.target} boxes",
                       style: body6TextStyle(color: ColorConstants.slate[500]),
                     ),
                     SizedBox(height: 3),
                     Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                      widget.data.name,
                       style: body6TextStyle(
                         weight: FontWeight.w700,
                         color: ColorConstants.slate[900],
@@ -146,7 +158,7 @@ class _CardCampaignState extends State<CardCampaign> {
                         ),
                         SizedBox(width: 8),
                         Text(
-                          'until March 1st 2023',
+                          'until ${formatDateToString(widget.data.end_date!)} | 15.00 UTC+7',
                           style: TextStyle(
                             color: ColorConstants.slate[400],
                             fontWeight: FontWeight.w600,
@@ -155,25 +167,7 @@ class _CardCampaignState extends State<CardCampaign> {
                         )
                       ],
                     ),
-                    SizedBox(height: 7),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: ColorConstants.error,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      padding: EdgeInsets.symmetric(
-                        vertical: 5,
-                        horizontal: 12,
-                      ),
-                      child: Text(
-                        'URGENTLY NEEDED!',
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
+                    Status(),
                   ],
                 ),
               ),

@@ -5,21 +5,21 @@ part 'campaign_model.g.dart';
 
 @JsonSerializable()
 class CampaignModel implements ModelFactory {
-  int id;
-  String company_id;
-  String name;
-  String description;
-  int progress;
-  int target;
-  String area;
-  String start_date;
-  String end_date;
-  String thumbnail_1;
-  String thumbnail_2;
-  String thumbnail_3;
-  String thumbnail_4;
-  String thumbnail_5;
-  int urgent;
+  int id = 0;
+  String company_id = "";
+  String name = "";
+  String description = "";
+  int progress = 0;
+  int target = 0;
+  String area = "";
+  String? start_date;
+  String? end_date;
+  String thumbnail_1 = "";
+  String thumbnail_2 = "";
+  String thumbnail_3 = "";
+  String thumbnail_4 = "";
+  String thumbnail_5 = "";
+  int urgent = 0;
   List<String>? type;
 
   CampaignModel({
@@ -40,6 +40,8 @@ class CampaignModel implements ModelFactory {
     required this.type,
     required this.urgent,
   });
+
+  CampaignModel.init();
 
   factory CampaignModel.fromJson(Map<String, dynamic> json) =>
       _$CampaignModelFromJson(json);

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/controller/campaign/types/food_detail.dart';
 import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
+import 'package:mobile/models/campaign/campaign_model.dart';
 import 'package:mobile/services/api/post_api_service.dart';
 
 class PickupDetail {
@@ -35,6 +36,9 @@ class CampaignController extends GetxController {
     "thumbnail4": "",
     "thumbnail5": "",
   }.obs;
+
+  RxMap<String, CampaignModel> campaignDetail = <String, CampaignModel>{}.obs;
+  RxMap<String, List<String>> thumbnailById = <String, List<String>>{}.obs;
 
   void createCampaign(BuildContext context) async {
     FormData formData = FormData.fromMap({

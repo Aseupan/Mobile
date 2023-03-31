@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/home/home_binding.dart';
 import 'package:mobile/controller/profile/edit_profile_binding.dart';
@@ -11,6 +12,7 @@ import 'package:mobile/views/auth/register_screen.dart';
 import 'package:mobile/views/campaign/campaigh_detail_screen.dart';
 import 'package:mobile/views/campaign/campaign_binding.dart';
 import 'package:mobile/views/campaign/campaign_list_screen.dart';
+import 'package:mobile/views/campaign/campaign_procedure.dart';
 import 'package:mobile/views/campaign/create_campaign_screen.dart';
 import 'package:mobile/views/campaign/food_campaign_screen.dart';
 import 'package:mobile/views/campaign/pickup/pickup_detail_screen.dart';
@@ -58,6 +60,7 @@ List<GetPage<dynamic>> appRouter() {
     GetPage(
       name: '/campaign/:campaignId/detail',
       page: () => CampaignDetailScreen(),
+      binding: CampaignBinding(),
     ),
     GetPage(
       name: '/campaign/:campaignId/food',
@@ -70,9 +73,19 @@ List<GetPage<dynamic>> appRouter() {
       binding: CampaignBinding(),
     ),
     GetPage(
-        name: '/campaign/:campaignId/pickup',
-        page: () => PickupDetailScreen(),
-        bindings: [CampaignBinding()]),
+      name: RoutePage.campaignProcedure,
+      page: () => CampaignProcedureScreen(),
+    ),
+    GetPage(
+      name: '/campaign/:campaignId/pickup',
+      page: () => PickupDetailScreen(),
+      bindings: [CampaignBinding()],
+    ),
+    GetPage(
+      name: RoutePage.formCatering,
+      page: () => Scaffold(),
+      binding: CampaignBinding(),
+    ),
     GetPage(
       name: RoutePage.registerBigparty,
       page: () => RegisterBigpartyScreen(),
