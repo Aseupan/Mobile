@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/services/api/app_token.dart';
+import 'package:mobile/services/api/base_url.dart';
 
 class ApiUtils {
   static Map<String, dynamic> header({bool? isAdmin = false}) {
@@ -46,4 +47,15 @@ class ApiUtils {
     UserToken.clearToken();
     Get.offAllNamed(RoutePage.onBoarding);
   }
+}
+
+Dio Api({bool? isFormData = false}) {
+  final dio = Dio(); // With default `Options`.
+  dio.options.baseUrl = BASE_URL;
+
+  var header = ApiUtils.header();
+
+  dio.options.headers.addAll(header);
+
+  return dio;
 }

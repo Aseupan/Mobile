@@ -103,35 +103,45 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       Obx(
-                        () => CarouselSlider(
-                          items: controller.campaigns.map((i) {
-                            return Builder(
-                              builder: (BuildContext context) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    Get.toNamed(RoutePage.campaignDetail(i.id));
-                                  },
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(7),
-                                    child: Image.network(
-                                      i.thumbnail_1,
-                                      width: 75.w,
-                                      height: 150,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          }).toList(),
-                          options: CarouselOptions(
-                            autoPlay: true,
-                            enableInfiniteScroll: false,
-                            padEnds: false,
-                            height: 130,
-                            viewportFraction: 0.9,
-                          ),
-                        ),
+                        () => controller.campaigns.isEmpty
+                            ? SizedBox(
+                                width: 100.w,
+                                height: 130,
+                                child: Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              )
+                            : CarouselSlider(
+                                items: controller.campaigns.map((i) {
+                                  return Builder(
+                                    builder: (BuildContext context) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          Get.toNamed(
+                                              RoutePage.campaignDetail(i.id));
+                                        },
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(7),
+                                          child: Image.network(
+                                            i.thumbnail_1,
+                                            width: 75.w,
+                                            height: 150,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                }).toList(),
+                                options: CarouselOptions(
+                                  autoPlay: true,
+                                  enableInfiniteScroll: false,
+                                  padEnds: false,
+                                  height: 130,
+                                  viewportFraction: 0.9,
+                                ),
+                              ),
                       ),
                       SizedBox(height: 20),
                       HomeTips(),
