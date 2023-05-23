@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/history/history_controller.dart';
 import 'package:mobile/views/history/done_card.dart';
-import 'package:mobile/views/history/ongoing_card.dart';
 
 class DoneSection extends StatelessWidget {
   final HistoryController controller = HistoryController.i;
@@ -13,7 +12,7 @@ class DoneSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Expanded(
-        child: controller.isLoadingOngoing.value
+        child: controller.isLoadingDone.value
             ? Center(
                 child: CircularProgressIndicator(),
               )
