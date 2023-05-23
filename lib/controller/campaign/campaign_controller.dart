@@ -2,8 +2,12 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import 'package:mobile/controller/campaign/types/food_detail.dart';
 import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/models/campaign/campaign_model.dart';
 import 'package:mobile/services/api/post_api_service.dart';
 
@@ -35,7 +39,49 @@ class CampaignController extends GetxController {
     "thumbnail3": "",
     "thumbnail4": "",
     "thumbnail5": "",
+    "latitude": 0,
+    "longitude": 0,
   }.obs;
+
+  Future<bool> checkPermission() async {
+    LocationPermission permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      return false;
+    }
+    return true;
+  }
+
+  void pickLocation() {
+    GlobalController globalController = GlobalController.i;
+    Get.to(
+      PlacePicker(
+        apiKey: "AIzaSyCYaqABDWiWv9p7FwlKURVmHfzHKbkXak0",
+        onPlacePicked: (result) {
+          data['latitude'] = result.geometry?.location.lat;
+          data['longitude'] = result.geometry?.location.lng;
+          String address = "";
+          result.addressComponents?.forEach((element) {
+            address += ("${element.shortName}, ");
+          });
+
+          data['area'].text = address;
+          print(data);
+
+          Get.back();
+        },
+        initialPosition: LatLng(
+          globalController.location[0],
+          globalController.location[1],
+        ),
+        useCurrentLocation: true,
+        resizeToAvoidBottomInset:
+            false, // only works in page mode, less flickery, remove if wrong offsets
+      ),
+    );
+  }
+
+  var createCampaignAddress = TextEditingController();
 
   var baseCateringForm = <String, dynamic>{
     "name": TextEditingController(),
@@ -81,6 +127,8 @@ class CampaignController extends GetxController {
       "thumbnail5": data['thumbnail5'] == ""
           ? ""
           : await MultipartFile.fromFile(data['thumbnail5']),
+      "latitude": data["latitude"],
+      "longitude": data["longitude"],
     });
 
     showDialog(

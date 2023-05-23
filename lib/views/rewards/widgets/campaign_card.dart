@@ -30,9 +30,9 @@ class CampaignCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
                 url,
-                fit: BoxFit.cover,
                 height: 130,
                 width: 100.w,
+                fit: BoxFit.cover,
               ),
             ),
             Padding(

@@ -24,6 +24,9 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       thumbnail_5: json['thumbnail_5'] as String,
       type: (json['type'] as List<dynamic>?)?.map((e) => e as String).toList(),
       urgent: json['urgent'] as int,
+      distance: (json['distance'] as num).toDouble(),
+      latitude: (json['latitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) =>
@@ -44,4 +47,7 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) =>
       'thumbnail_5': instance.thumbnail_5,
       'urgent': instance.urgent,
       'type': instance.type,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+      'distance': instance.distance,
     };

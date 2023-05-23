@@ -21,6 +21,9 @@ class CampaignModel implements ModelFactory {
   String thumbnail_5 = "";
   int urgent = 0;
   List<String>? type;
+  double latitude = 0;
+  double longitude = 0;
+  double distance = 0;
 
   CampaignModel({
     required this.area,
@@ -39,6 +42,9 @@ class CampaignModel implements ModelFactory {
     required this.thumbnail_5,
     required this.type,
     required this.urgent,
+    required this.distance,
+    required this.latitude,
+    required this.longitude,
   });
 
   CampaignModel.init();

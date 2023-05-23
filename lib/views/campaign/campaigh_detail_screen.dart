@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -251,6 +253,24 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
                                   },
                                 ),
                               )
+                            ],
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.map,
+                                size: 14,
+                              ),
+                              SizedBox(width: 8),
+                              Flexible(
+                                child: Text(
+                                  "${data.distance.toStringAsFixed(3)} km from you",
+                                  style: body6TextStyle(
+                                    color: ColorConstants.slate[500],
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                           SizedBox(height: 20),

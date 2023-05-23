@@ -21,6 +21,7 @@ class MyAddressScreen extends StatelessWidget {
           constraints: BoxConstraints(minHeight: 85.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Obx(
                 () {

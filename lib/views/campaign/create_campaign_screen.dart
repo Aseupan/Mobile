@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import 'package:mobile/controller/campaign/campaign_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/campaign/widgets/insert_image.dart';
@@ -115,8 +117,31 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                   label: "Campaign Area",
                   controller: controller.data['area'],
                   placeholder: "ex : Jl. Soekarno Hatta",
+                  readOnly: true,
                   validator: (e) =>
                       inputValidator(e, "Campaign area cannot be empty"),
+                  action: InkWell(
+                    onTap: () async {
+                      if (await controller.checkPermission()) {
+                        controller.pickLocation();
+                      }
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: ColorConstants.slate[400]!,
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        'Pick Location',
+                        style: body6TextStyle(
+                          weight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
                 SizedBox(height: 6),
                 Text(

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:mobile/controller/campaign/campaign_controller.dart';
 import 'package:mobile/controller/campaign/catering_controller.dart';
@@ -176,14 +178,24 @@ class GetApiService {
   static void getCampaigns() async {
     final api = Dio();
     api.options.headers = ApiUtils.header();
+    api.options.baseUrl = BASE_URL;
 
     try {
-      var request = await api.get("$BASE_URL/api/campaign/user/all");
+      GlobalController controller = GlobalController.i;
+
+      Map<String, double> location = {
+        "latitude": controller.location[0],
+        "longitude": controller.location[1]
+      };
+
+      var request = await api.get(
+        "$BASE_URL/api/campaign/user/all",
+        queryParameters: location,
+      );
 
       ApiResponses<CampaignModel> response =
           ApiResponses.fromJson(request.data);
 
-      GlobalController controller = GlobalController.i;
       controller.campaigns.value = response.data!;
     } on DioError catch (e) {
       if (e.response != null) {
@@ -202,7 +214,16 @@ class GetApiService {
     api.options.headers = ApiUtils.header();
 
     try {
-      var request = await api.get("$BASE_URL/api/campaign/user/detail/$id");
+      GlobalController globalController = GlobalController.i;
+
+      Map<String, double> location = {
+        "latitude": globalController.location[0],
+        "longitude": globalController.location[1]
+      };
+      var request = await api.get(
+        "$BASE_URL/api/campaign/user/detail/$id",
+        queryParameters: location,
+      );
 
       ApiResponse<CampaignModel> response = ApiResponse.fromJson(request.data);
 

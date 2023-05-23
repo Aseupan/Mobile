@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/auth/auth_controller.dart';
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/text_styles.dart';
@@ -21,6 +22,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   final AuthController _controller = Get.find<AuthController>();
   final confirmPasswordController = TextEditingController();
+
+  GlobalController globalController = GlobalController.i;
+  @override
+  void initState() {
+    super.initState();
+    globalController.getCurrentLocation();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -172,8 +180,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             controller: _controller.registerForm['password'],
                             obscureText: _obscureText,
                             validator: (value) {
+                              final pattern = RegExp(
+                                  r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
+
                               if (value!.isEmpty) {
                                 return 'Please enter your password';
+                              }
+
+                              if (!pattern.hasMatch(value)) {
+                                return "Your password is weak";
                               }
 
                               return null;

@@ -88,6 +88,7 @@ class _CampaignListScreenState extends State<CampaignListScreen> {
                       )
                     ],
                   )),
+              SizedBox(height: 40),
             ],
           ),
         ),

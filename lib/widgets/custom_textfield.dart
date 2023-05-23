@@ -11,6 +11,8 @@ class CustomTextfield extends StatelessWidget {
   void Function(String)? onChange;
   TextInputType? keyboardType = TextInputType.text;
   int maxLines = 1;
+  Widget? action;
+  bool readOnly;
 
   CustomTextfield({
     super.key,
@@ -21,6 +23,8 @@ class CustomTextfield extends StatelessWidget {
     this.validator,
     this.keyboardType,
     this.maxLines = 1,
+    this.action,
+    this.readOnly = false,
   });
 
   @override
@@ -28,12 +32,19 @@ class CustomTextfield extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: body5TextStyle(weight: FontWeight.w500),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              label,
+              style: body5TextStyle(weight: FontWeight.w500),
+            ),
+            action ?? Container(),
+          ],
         ),
         SizedBox(height: 6),
         TextFormField(
+          readOnly: readOnly,
           decoration: InputDecoration(hintText: placeholder),
           controller: controller,
           style: body5TextStyle(weight: FontWeight.w500),

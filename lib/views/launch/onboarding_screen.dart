@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/views/launch/onboarding/section_one.dart';
 import 'package:mobile/views/launch/onboarding/section_three.dart';
@@ -26,6 +27,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       default:
         return SectionOnboarding1();
     }
+  }
+
+  GlobalController globalController = GlobalController.i;
+  @override
+  void initState() {
+    super.initState();
+    globalController.getCurrentLocation();
   }
 
   @override

@@ -28,6 +28,9 @@ dependencies:
   dotted_border: ^2.0.0+3
   url_launcher: ^6.1.10
   dartz: ^0.10.1
+  geolocator: ^9.0.2
+  google_maps_flutter: ^2.2.7
+  google_maps_place_picker_mb: ^3.0.2
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/routes/app_routes.dart';
@@ -24,10 +25,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   var controller = GlobalController.i;
+
   @override
   void initState() {
     super.initState();
+    controller.getCurrentLocation();
+    GetApiService.getCampaigns();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Geolocator.requestPermission();
       controller.isAdmin.value = AdminToken.checkToken();
 
       GetApiService.getuserProfile();
@@ -44,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    GetApiService.getOngoingHistory();
+    GetApiService.getCampaigns();
     return Scaffold(
       body: Stack(
         children: [
