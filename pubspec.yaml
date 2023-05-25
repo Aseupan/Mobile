@@ -31,6 +31,7 @@ dependencies:
   geolocator: ^9.0.2
   google_maps_flutter: ^2.2.7
   google_maps_place_picker_mb: ^3.0.2
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +48,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/logo/
+    - assets/env/
 
   fonts:
     - family: Manrope

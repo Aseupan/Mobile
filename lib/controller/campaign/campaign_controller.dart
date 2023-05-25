@@ -10,6 +10,7 @@ import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
 import 'package:mobile/controller/global/global_controller.dart';
 import 'package:mobile/models/campaign/campaign_model.dart';
 import 'package:mobile/services/api/post_api_service.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class PickupDetail {
   RxBool isSpecial = false.obs;
@@ -56,7 +57,7 @@ class CampaignController extends GetxController {
     GlobalController globalController = GlobalController.i;
     Get.to(
       PlacePicker(
-        apiKey: "AIzaSyCYaqABDWiWv9p7FwlKURVmHfzHKbkXak0",
+        apiKey: dotenv.env['AIzaSyCYaqABDWiWv9p7FwlKURVmHfzHKbkXak0']!,
         onPlacePicked: (result) {
           data['latitude'] = result.geometry?.location.lat;
           data['longitude'] = result.geometry?.location.lng;
