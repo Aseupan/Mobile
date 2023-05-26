@@ -57,7 +57,7 @@ class CampaignController extends GetxController {
     GlobalController globalController = GlobalController.i;
     Get.to(
       PlacePicker(
-        apiKey: dotenv.env['AIzaSyCYaqABDWiWv9p7FwlKURVmHfzHKbkXak0']!,
+        apiKey: dotenv.env['MAP_API_KEY']!,
         onPlacePicked: (result) {
           data['latitude'] = result.geometry?.location.lat;
           data['longitude'] = result.geometry?.location.lng;

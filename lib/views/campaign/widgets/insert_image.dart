@@ -53,12 +53,6 @@ class _InsertImageState extends State<InsertImage> {
               for (int i = 0; i < images.length; i++) {
                 controller.data['thumbnail${i + 1}'] = images[i].path;
               }
-
-              // controller.data['thumbnail1'] = 'ads';
-              // print(controller.data['thumbnail1']);
-              // print(controller.data);
-
-              // controller.data[]
             });
           },
           child: DottedBorder(
@@ -96,7 +90,7 @@ class _InsertImageState extends State<InsertImage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: 80.w,
+                  width: 70.w,
                   child: Text(
                     path,
                     overflow: TextOverflow.ellipsis,

@@ -13,7 +13,7 @@ Future<File?> pickImage(ImageSource source) async {
 }
 
 Future<List<File>> pickMultiImage({int max = 100}) async {
-  final pickedFile = await ImagePicker().pickMultiImage(imageQuality: 100);
+  final pickedFile = await ImagePicker().pickMultiImage(imageQuality: 75);
 
   if (pickedFile.isNotEmpty) {
     List<File> parsePicked = <File>[];

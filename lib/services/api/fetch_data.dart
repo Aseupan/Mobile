@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:mobile/models/response.dart';
-import 'package:mobile/services/api/api_utils.dart';
+import 'package:mobile/services/api/api_utils.dart' hide Api;
 import 'package:mobile/services/api/request_method.dart';
+import 'package:mobile/services/api/api.dart';
 
 Future<ApiResponse<T>?> fetchData<T>({
   required String url,
@@ -9,9 +10,10 @@ Future<ApiResponse<T>?> fetchData<T>({
   Object? data,
   bool? isAlert = true,
   Map<String, String>? header,
+  bool isAdmin = false,
 }) async {
   try {
-    final api = Api(isFormData: data is FormData);
+    final api = Api(isAdmin: isAdmin);
 
     Response request = await api.request(url,
         data: data, options: Options(method: method.value));
@@ -23,20 +25,13 @@ Future<ApiResponse<T>?> fetchData<T>({
     ApiResponse<T> response = ApiResponse.fromJson(request.data);
     return response;
   } on DioError catch (e) {
-    final response = e.response;
-    if (response?.statusCode == 409) {
-      ApiUtils.logout(response!);
-    }
-
-    if (isAlert!) {
-      if (response?.data?['message'] != null) {
-        ApiUtils.showAlert(response?.data['message']);
-      } else {
-        ApiUtils.showAlert(e.response?.data ??
-            e.response?.statusMessage ??
-            e.message ??
-            e.toString());
+    if (e.response != null) {
+      final response = e.response!;
+      if (!ApiUtils.logout(response)) {
+        ApiUtils.showAlert(response.data['error'] ?? e.toString());
       }
+    } else {
+      ApiUtils.showAlert(e.message ?? e.error.toString());
     }
     return null;
   }
@@ -60,17 +55,13 @@ Future<ApiResponses<T>?> fetchMultipleData<T>({
     ApiResponses<T> response = ApiResponses.fromJson(request.data);
     return response;
   } on DioError catch (e) {
-    final response = e.response;
-    if (response?.statusCode == 409) {
-      ApiUtils.logout(response!);
-    }
-    if (isAlert!) {
-      if (response?.data.runtimeType == Map) {
-        ApiUtils.showAlert(response?.data?['message']);
-      } else {
-        ApiUtils.showAlert(
-            e.response?.statusMessage ?? e.message ?? e.toString());
+    if (e.response != null) {
+      final response = e.response!;
+      if (!ApiUtils.logout(response)) {
+        ApiUtils.showAlert(response.data['error'] ?? e.toString());
       }
+    } else {
+      ApiUtils.showAlert(e.message ?? e.error.toString());
     }
     return null;
   }

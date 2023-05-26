@@ -37,11 +37,6 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
       GetApiService.getCampaignById(id);
 
       CampaignModel data = controller.campaignDetail[id]!;
-      // if (data.thumbnail_1 != "") thumbnails.add(data.thumbnail_1);
-      // if (data.thumbnail_2 != "") thumbnails.add(data.thumbnail_2);
-      // if (data.thumbnail_3 != "") thumbnails.add(data.thumbnail_3);
-      // if (data.thumbnail_4 != "") thumbnails.add(data.thumbnail_4);
-      // if (data.thumbnail_5 != "") thumbnails.add(data.thumbnail_5);
     });
   }
 

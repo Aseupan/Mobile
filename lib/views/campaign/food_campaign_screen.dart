@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controller/campaign/campaign_controller.dart';
@@ -6,10 +8,12 @@ import 'package:mobile/routes/app_routes.dart';
 import 'package:mobile/utils/color_constants.dart';
 import 'package:mobile/widgets/control_counter.dart';
 import 'package:mobile/widgets/custom_appbar.dart';
+import 'package:mobile/widgets/pick_image_ocr.dart';
 import 'package:mobile/widgets/text_styles.dart';
 import 'package:mobile/widgets/tips.dart';
 import 'package:sizer/sizer.dart';
 import 'package:intl/intl.dart';
+import 'package:mobile/views/campaign/widgets/insert_image.dart';
 
 class FoodCampaignScreen extends StatefulWidget {
   const FoodCampaignScreen({super.key});
@@ -116,8 +120,12 @@ class _FoodCampaignScreenState extends State<FoodCampaignScreen> {
     );
   }
 
+  List<File> a = <File>[];
+
   @override
   Widget build(BuildContext context) {
+    print(a.length);
+
     return Scaffold(
       backgroundColor: ColorConstants.slate[25],
       appBar: CustomAppBar("Food Details"),
@@ -223,6 +231,8 @@ class _FoodCampaignScreenState extends State<FoodCampaignScreen> {
                   _controller.foodDetails[id]?.checkValid();
                 },
               ),
+              SizedBox(height: 18),
+              PickImageOcr(),
               SizedBox(height: 20),
               Tips(),
               SizedBox(height: 35),

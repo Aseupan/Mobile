@@ -3,6 +3,7 @@ import 'package:mobile/models/campaign/campaign_model.dart';
 import 'package:mobile/models/catering/catering_model.dart';
 import 'package:mobile/models/chips/cart_response_model.dart';
 import 'package:mobile/models/chips/chips_model.dart';
+import 'package:mobile/models/detect/detect_model.dart';
 import 'package:mobile/models/history/history_model.dart';
 import 'package:mobile/models/history/ongoing_model.dart';
 import 'package:mobile/models/home/information_card.dart';
@@ -39,6 +40,8 @@ abstract class ModelFactory {
       return HistoryModel.fromJson(json);
     } else if (strType == (OngoingModel).toString()) {
       return OngoingModel.fromJson(json);
+    } else if (strType == (DetectModel).toString()) {
+      return DetectModel.fromJson(json);
     } else {
       throw UnimplementedError('`$type` factory unimplemented.');
     }
