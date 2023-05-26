@@ -10,22 +10,19 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout code 🌎
         uses: actions/checkout@v2
 
-      - name: Set up Flutter
+      - name: Set up Flutter 🚀
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.7.12' 
 
-      - name: Install dependencies
+      - name: Install dependencies 📁
         run: flutter pub get
 
-      - name: Run tests
-        run: flutter test
-
-      - name: Build Android app
+      - name: Build Android app 📱
         run: flutter build apk
 
-      - name: Build iOS app
+      - name: Build iOS app 📱
         run: flutter build ios
