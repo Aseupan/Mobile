@@ -258,7 +258,7 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
                               SizedBox(width: 8),
                               Flexible(
                                 child: Text(
-                                  "${data.distance.toStringAsFixed(3)} km from you",
+                                  "${data.distance} from you",
                                   style: body6TextStyle(
                                     color: ColorConstants.slate[500],
                                   ),

@@ -24,7 +24,7 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       thumbnail_5: json['thumbnail_5'] as String,
       type: (json['type'] as List<dynamic>?)?.map((e) => e as String).toList(),
       urgent: json['urgent'] as int,
-      distance: (json['distance'] as num).toDouble(),
+      distance: json['distance'] as String,
       latitude: (json['latitude'] as num).toDouble(),
       longitude: (json['longitude'] as num).toDouble(),
     );

@@ -23,7 +23,7 @@ class CampaignModel implements ModelFactory {
   List<String>? type;
   double latitude = 0;
   double longitude = 0;
-  double distance = 0;
+  String distance = "";
 
   CampaignModel({
     required this.area,
