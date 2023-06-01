@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:mobile/models/history/history_model.dart';
 import 'package:mobile/models/history/ongoing_model.dart';
-import 'package:mobile/services/api/fetch_data.dart';
+import 'package:mobile/services/api/fetch_backend.dart';
 import 'package:mobile/services/api/request_method.dart';
 
 class HistoryController extends GetxController {
@@ -26,7 +26,7 @@ class HistoryController extends GetxController {
   }
 
   void getOngoingData() async {
-    var response = await fetchMultipleData<OngoingModel>(
+    var response = await fetchMultipleBackend<OngoingModel>(
         url: "/api/history/ongoing", method: RequestMethod.GET);
 
     if (response != null) {
@@ -41,7 +41,7 @@ class HistoryController extends GetxController {
   }
 
   void getDoneData() async {
-    var response = await fetchMultipleData<HistoryModel>(
+    var response = await fetchMultipleBackend<HistoryModel>(
         url: "/api/history/completed", method: RequestMethod.GET);
 
     if (response != null) {

@@ -25,62 +25,75 @@ class CardInfo extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(10)),
-            child: Image(
-              image: NetworkImage(data.thumbnail),
+            child: SizedBox(
               width: 75,
               height: 75,
-              fit: BoxFit.fill,
+              child: Image(
+                image: NetworkImage(data.thumbnail),
+                width: 75,
+                height: 75,
+                fit: BoxFit.fill,
+              ),
             ),
           ),
           SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  gradient: ColorConstants.gradient['blue1'],
-                  borderRadius: BorderRadius.all(Radius.circular(4)),
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
-                child: Text(
-                  data.type,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 9,
-                    fontWeight: FontWeight.w800,
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: ColorConstants.gradient['blue1'],
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
                   ),
-                ),
-              ),
-              SizedBox(height: 6),
-              Text(
-                data.title,
-                style: body6TextStyle(
-                  color: ColorConstants.slate[900],
-                  weight: FontWeight.w700,
-                ),
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Icon(
-                    Icons.calendar_month_outlined,
-                    size: 12,
-                    color: ColorConstants.slate[400],
-                  ),
-                  SizedBox(width: 8),
-                  Text(
-                    formatDate(data.CreatedAt),
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+                  child: Text(
+                    data.type,
                     style: TextStyle(
-                      color: ColorConstants.slate[400],
-                      fontWeight: FontWeight.w600,
-                      fontSize: 8,
+                      color: Colors.white,
+                      fontSize: 9,
+                      fontWeight: FontWeight.w800,
                     ),
-                  )
-                ],
-              )
-            ],
+                  ),
+                ),
+                SizedBox(height: 2),
+                Text(
+                  data.title,
+                  style: body6TextStyle(
+                    color: ColorConstants.slate[900],
+                    weight: FontWeight.w700,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  data.body,
+                  style: body6TextStyle(
+                    size: 10,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.calendar_month_outlined,
+                      size: 12,
+                      color: ColorConstants.slate[400],
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      formatDate(data.CreatedAt),
+                      style: TextStyle(
+                        color: ColorConstants.slate[400],
+                        fontWeight: FontWeight.w600,
+                        fontSize: 8,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ],
       ),
