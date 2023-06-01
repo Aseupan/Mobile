@@ -43,36 +43,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-/*
-return ScreenUtilInit(
-      designSize: Size(360, 800),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: ((context, child) {
-        return Sizer(
-          builder: (context, orientation, deviceType) => GestureDetector(
-            onTap: () {
-              FocusManager.instance.primaryFocus?.unfocus();
-            },
-            child: GetMaterialApp(
-              initialBinding: GlobalBinding(),
-              title: 'GSC Berkah',
-              theme: GlobalTheme(),
-              getPages: appRouter(),
-              initialRoute: RoutePage.splash,
-              // initialRoute:
-              //     AppToken.checkToken() ? RoutePage.home : RoutePage.onBoarding,
-              builder: (context, child) {
-                return MediaQuery(
-                  data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
-                  child: child ?? Container(),
-                );
-              },
-            ),
-          ),
-        );
-      }),
-    );
-*/

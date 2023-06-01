@@ -145,49 +145,6 @@ class ProfileHeader extends StatelessWidget {
                           : Container(),
                     ],
                   ),
-                  // Obx(
-                  //   () => Row(
-                  //     children: [
-                  //       Container(
-                  //         decoration: BoxDecoration(
-                  //           color: ColorConstants.primary[600],
-                  //           borderRadius: BorderRadius.circular(5),
-                  //         ),
-                  //         padding:
-                  //             EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-                  //         child: Text(
-                  //           isCompany ? 'Big Party' : 'Regular Food Giver',
-                  //           style: body6TextStyle(
-                  //             weight: FontWeight.w700,
-                  //             color: ColorConstants.slate[25],
-                  //           ),
-                  //         ),
-                  //       ),
-                  //       SizedBox(width: 10),
-                  //       isCompany
-                  //           ? Container(
-                  //               decoration: BoxDecoration(
-                  //                 color: company.profile.value.verified
-                  //                     ? ColorConstants.success
-                  //                     : ColorConstants.error,
-                  //                 borderRadius: BorderRadius.circular(5),
-                  //               ),
-                  //               padding: EdgeInsets.symmetric(
-                  //                   vertical: 2, horizontal: 8),
-                  //               child: Text(
-                  //                 company.profile.value.verified
-                  //                     ? 'Verified'
-                  //                     : 'Not Verified',
-                  //                 style: body6TextStyle(
-                  //                   weight: FontWeight.w700,
-                  //                   color: ColorConstants.slate[25],
-                  //                 ),
-                  //               ),
-                  //             )
-                  //           : Container(),
-                  //     ],
-                  //   ),
-                  // ),
                 ],
               )
             ],
@@ -197,12 +154,7 @@ class ProfileHeader extends StatelessWidget {
         isCompany && !company.profile.value.verified
             ? ButtonVerified()
             : Container(),
-        // Obx(() {
-        // return isCompany && !company.profile.value.verified
-        //     ? ButtonVerified()
-        //     : Container();
-        // }),
-        ButtonBuyChips(),
+        !isCompany ? ButtonBuyChips() : Container(),
       ],
     );
   }

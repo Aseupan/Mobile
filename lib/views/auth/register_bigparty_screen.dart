@@ -219,8 +219,15 @@ class _RegisterBigpartyScreenState extends State<RegisterBigpartyScreen> {
                                 _controller.registerBigpartyForm['password'],
                             obscureText: _obscureText,
                             validator: (value) {
+                              final pattern = RegExp(
+                                  r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@_#])[a-zA-Z\d@_#]{8,}$");
+
                               if (value!.isEmpty) {
                                 return 'Please enter your password';
+                              }
+
+                              if (!pattern.hasMatch(value)) {
+                                return "Your password is weak";
                               }
 
                               return null;
