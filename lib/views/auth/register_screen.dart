@@ -187,8 +187,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 return 'Please enter your password';
                               }
 
+                              if (value.length < 8) {
+                                return 'Password must be at least 8 characters long';
+                              }
+
                               if (!pattern.hasMatch(value)) {
-                                return "Your password is weak";
+                                if (!RegExp(r'(?=.*\d)').hasMatch(value)) {
+                                  return 'Number is required';
+                                }
+                                if (!RegExp(r'(?=.*[A-Z])').hasMatch(value)) {
+                                  return 'Capital character is required';
+                                }
+                                if (!RegExp(r'(?=.*[@_#*])').hasMatch(value)) {
+                                  return 'Special character is required';
+                                }
                               }
 
                               return null;
