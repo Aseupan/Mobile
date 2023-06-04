@@ -9,9 +9,11 @@ This project is a starting point for a Flutter application.
 This project is made by FLutter Framework that can be run in multiple
 
 1. Clone this repo `git clone`
-2. `flutter run` (for running application in debug mode)
-3. `flutter build` (for build application)
-4. Enjoy the application
+2. Create `.env` file under `assets/env` folder with variables from `.env.example`
+3. Run `flutter pub get` to install all dependencies required for the app. Make sure you're using the latest Flutter SDK
+4. `flutter run` (for running application in debug mode)
+5. `flutter build` (for build application)
+6. Enjoy the application
 
 ## Requirements
 
